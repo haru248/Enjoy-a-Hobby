@@ -87,7 +87,7 @@
 ・画面遷移図
   - サイトマップ https://www.figma.com/file/3QFxI7mOXGDJfhouJoX3Pf/LIVE_Pl%40nning-%E3%82%B5%E3%82%A4%E3%83%88%E3%83%9E%E3%83%83%E3%83%97?node-id=0%3A1&t=KDMTMFDnvTgjTOZW-1
 
-  - 画面遷移図 https://www.figma.com/file/hfHNxM5j54VP0lTtMou2KT/LIVE_Pl%EF%BC%A0nning_%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=3%3A27&t=lPd5El70E3E1ShkX-1
+  - 画面遷移図 https://www.figma.com/file/hfHNxM5j54VP0lTtMou2KT/LIVE_Pl%EF%BC%A0nning_%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=25%3A2&t=lPd5El70E3E1ShkX-1
 
 # 以下メモ(消去予定)
 貴重品
