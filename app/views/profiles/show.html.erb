@@ -1,0 +1,9 @@
+<h1><%= t '.title' %></h1>
+
+<p><%= User.human_attribute_name(:user_name) %></p>
+<%= @user.user_name %>
+<p><%= User.human_attribute_name(:email) %></p>
+<%= @user.email %>
+<br>
+<%= link_to t('profiles.edit.title'), edit_profile_path %>
+<%= link_to t('profiles.new.title'), new_profile_path %>

@@ -1,0 +1,17 @@
+<h1><%= t '.title' %></h1>
+
+<%= form_with url: login_path, method: :post, local: true do |f| %>
+  <div class = 'field'>
+    <%= f.label User.human_attribute_name(:email) %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class = 'field'>
+    <%= f.label User.human_attribute_name(:password) %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class = 'actions'>
+    <%= f.submit t('default.login') %>
+  </div>
+<% end %>
+<%= link_to t('.forget_password'), new_password_reset_path %>
+<%= link_to t('default.singin'), new_user_path %>

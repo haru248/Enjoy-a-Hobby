@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'annotate'
-gem 'migration_comments'
+# gem 'migration_comments'
 
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
@@ -64,6 +64,8 @@ gem 'active_decorator'
 
 gem 'ransack'
 gem 'enum_help'
+
+gem 'rename'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -100,6 +102,7 @@ group :test do
   gem 'capybara'
   gem 'faker'
   gem 'webdrivers'
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

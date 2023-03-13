@@ -1,0 +1,4 @@
+ja:
+  user_mailer:
+    reset_password_email:
+      subject: 'パスワード再発行'

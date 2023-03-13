@@ -1,0 +1,16 @@
+<h1><%= t '.title' %></h1>
+
+<%= form_with model: @user, url: profile_path, method: :put, local: true do |f| %>
+  <%= render 'shared/error_messages', model: @user %>
+  <div class = 'field'>
+    <%= f.label :user_name %><br />
+    <%= f.text_field :user_name %>
+  </div>
+  <div class = 'field'>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class = 'actions'>
+    <%= f.submit t('default.update') %>
+  </div>
+<% end %>
