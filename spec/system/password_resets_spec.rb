@@ -6,7 +6,7 @@ RSpec.describe 'PasswordResets', type: :system do
       before { visit new_password_reset_path }
       context '存在するユーザーのメールアドレスが入力' do
         let!(:user) { create(:user) }
-        before do 
+        before do
           fill_in 'email', with: user.email
           click_button '送信'
         end
@@ -16,7 +16,7 @@ RSpec.describe 'PasswordResets', type: :system do
               reset_user = User.find(user.id)
               url = edit_password_reset_url(reset_user.reset_password_token)
               delete_url = 'http://www.example.com'
-              url.sub!(delete_url,'')
+              url.sub!(delete_url, '')
               visit url
               fill_in 'user_password', with: 'test_pass'
               fill_in 'user_password_confirmation', with: 'test_pass'
@@ -36,7 +36,7 @@ RSpec.describe 'PasswordResets', type: :system do
               reset_user = User.find(user.id)
               url = edit_password_reset_url(reset_user.reset_password_token)
               delete_url = 'http://www.example.com'
-              url.sub!(delete_url,'')
+              url.sub!(delete_url, '')
               visit url
               fill_in 'user_password', with: 'test_pass'
               fill_in 'user_password_confirmation', with: 'password'

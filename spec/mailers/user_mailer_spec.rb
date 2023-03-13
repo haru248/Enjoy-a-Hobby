@@ -10,7 +10,6 @@ RSpec.describe UserMailer, type: :mailer do
       expect(mail.to).to eq ["#{user.email}"]
       expect(mail.subject).to eq 'パスワード再発行'
       expect(mail.html_part.body.to_s).to include 'パスワード再発行のご依頼を受け付けました。'
-      byebug
     end
   end
 end
