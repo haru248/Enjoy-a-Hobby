@@ -1,0 +1,82 @@
+ja:
+  default:
+    app_name: 'LIVE Pl@nning'
+    singin: 'ユーザー登録'
+    login: 'ログイン'
+    logout: 'ログアウト'
+    register: '登録'
+    send: '送信'
+    update: '更新'
+    preset: 'プリセット'
+    inventory_list: '持ち物リスト'
+    purchase_list: '物販購入リスト'
+    schedule: 'スケジュール'
+  users:
+    new:
+      title: 'ユーザー登録'
+      singin: '登録'
+    create:
+      success: 'ユーザー登録が完了しました'
+      fail: 'ユーザー登録に失敗しました'
+  user_sessions:
+    new:
+      title: 'ログイン'
+      forget_password: 'パスワードを忘れた方'
+    create:
+      success: 'ログインしました'
+      fail: 'ログインに失敗しました'
+    destroy:
+      success: 'ログアウトしました'
+  password_resets:
+    new:
+      title: 'パスワードを忘れた方'
+      user_email: '登録したメールアドレス'
+    create:
+      send_password_change_email: 'パスワード変更用メールを送信しました'
+    edit:
+      title: 'パスワード変更'
+    update:
+      changed_password: 'パスワードを変更しました'
+  presets:
+    index:
+    new:
+    create:
+    show:
+    edit:
+    update:
+    destroy:
+  item_categories:
+    edit:
+    create:
+    update:
+    destroy:
+  preset_items:
+    new:
+    create:
+    edit:
+    update:
+    destroy:
+  profiles:
+    show:
+      title: 'プロフィール'
+    edit:
+      title: 'プロフィール編集'
+      password_reset: 'パスワード変更'
+    update:
+      success: 'プロフィールを変更しました'
+      fail: 'プロフィールの編集に失敗しました'
+    new:
+      title: 'パスワード変更用メール送信'
+      explanatory: '登録されているメールアドレスにパスワード変更用の
+メールを送信します。
+メールアドレスに問題がなければ送信ボタンを押してください。'
+    create:
+      send_password_change_email: 'パスワード変更用メールを送信しました'
+  supports:
+    terms_of_servise: 
+      title: '利用規約'
+    privacy_policy: 
+      title: 'プライバシーポリシー'
+    inquiry:
+      title: '問い合わせ'
+    create:

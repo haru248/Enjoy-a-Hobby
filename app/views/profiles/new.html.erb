@@ -1,0 +1,8 @@
+<h1><%= t '.title' %></h1>
+
+<p><%= t('.explanatory') %></p>
+<br>
+<p><%= User.human_attribute_name(:email) %></p>
+<%= @user.email %>
+<br>
+<%= link_to t('default.send'), profile_path, method: :post %>

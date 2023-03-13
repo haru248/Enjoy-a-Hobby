@@ -1,0 +1,19 @@
+<h1><%= t '.title' %></h1>
+<%= form_for @user, :url => password_reset_path(@token), :html => {:method => :put} do |f| %>
+  <%= render 'shared/error_messages', model: @user %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= @user.email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="actions">
+    <%= f.submit t('default.update') %>
+  </div>
+<% end %>
