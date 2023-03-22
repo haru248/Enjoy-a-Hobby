@@ -2,13 +2,25 @@ ja:
   activerecord:
     models:
       user: 'ユーザー'
+      preset: 'プリセット'
+      item_category: 'カテゴリー'
+      preset_item: '持ち物'
     attributes:
       user:
-        id: 'ID'
+        id: 'ユーザーID'
         user_name: 'ユーザーネーム'
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
+      preset:
+        id: 'プリセットID'
+        preset_name: 'プリセット名'
+      item_category:
+        id: 'カテゴリーID'
+        item_category_name: 'カテゴリー名'
+      preset_item:
+        id: 'プリセットアイテムID'
+        preset_item_name: '持ち物名'
   attributes:
     created_at: '作成日'
     updates_at: '更新日'

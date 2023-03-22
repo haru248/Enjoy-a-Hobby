@@ -71,6 +71,9 @@ RSpec.configure do |config|
     # strategyがtransactionなので、rollbackする
     DatabaseCleaner.clean
   end
+  config.after(:all) do
+    DatabaseCleaner.clean
+  end
 
   config.include FactoryBot::Syntax::Methods
   config.include LoginModule

@@ -34,10 +34,12 @@ module EnjoyAHobby
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     # config.eager_load_paths << Rails.root.join("extras")
-
+    config.action_controller.include_all_helpers = false
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.generators do |g|
+      g.assets false
+      g.skip_routes true
       g.test_framework false
     end
   end

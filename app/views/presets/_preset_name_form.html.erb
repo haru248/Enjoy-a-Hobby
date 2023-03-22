@@ -1,0 +1,10 @@
+<%= form_with model: preset, local: true do |f| %>
+  <%= render 'shared/error_messages', model: preset %>
+  <div class = 'field'>
+    <%= f.label :preset_name %><br />
+    <%= f.text_field :preset_name %>
+  </div>
+  <div class = 'actions'>
+    <%= f.submit %>
+  </div>
+<% end %>

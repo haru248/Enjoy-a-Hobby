@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def new; end
+  def password_reset; end
 
   def create
     @user.deliver_reset_password_instructions! if @user

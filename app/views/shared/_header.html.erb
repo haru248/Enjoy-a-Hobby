@@ -1,19 +1,19 @@
 <header class="sticky-top">
-  <h1><%= link_to t('default.app_name'), root_path %></h1>
+  <h1><%= link_to t('defaults.app_name'), root_path %></h1>
   <div align = 'right'>
   <% if logged_in? %>
     <li>
       <%= link_to t('profiles.show.title'), profile_path %>
     </li>
     <li>
-      <%= link_to t('default.logout'), logout_path, method: :delete %>
+      <%= link_to t('defaults.logout'), logout_path, method: :delete %>
      </li>
   <% else %>
     <li>
-       <%= link_to t('default.singin'), new_user_path %>
+       <%= link_to t('defaults.singin'), new_user_path %>
     </li>
     <li>
-       <%= link_to t('default.login'), login_path %>
+       <%= link_to t('defaults.login'), login_path %>
      </li>
   <% end %>
   </div>

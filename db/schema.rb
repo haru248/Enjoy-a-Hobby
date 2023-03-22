@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_07_103108) do
+ActiveRecord::Schema.define(version: 2023_03_13_112238) do
+
+  create_table "item_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "item_category_name", null: false
+    t.bigint "preset_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_category_name", "preset_id"], name: "index_item_categories_on_item_category_name_and_preset_id", unique: true
+    t.index ["preset_id"], name: "index_item_categories_on_preset_id"
+  end
+
+  create_table "preset_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "preset_item_name", null: false
+    t.bigint "item_category_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_category_id"], name: "index_preset_items_on_item_category_id"
+  end
+
+  create_table "presets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "preset_name", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_presets_on_user_id"
+  end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "user_name", null: false
@@ -27,4 +52,7 @@ ActiveRecord::Schema.define(version: 2023_03_07_103108) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
+  add_foreign_key "item_categories", "presets"
+  add_foreign_key "preset_items", "item_categories"
+  add_foreign_key "presets", "users"
 end
