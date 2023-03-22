@@ -25,6 +25,7 @@ RSpec.describe 'UserSessions', type: :system do
       context 'パスワードが未入力' do
         it 'ログインに失敗する' do
           fill_in 'email', with: user.email
+          sleep(1)
           click_button 'ログイン'
           expect(current_path).to eq login_path
           expect(page).to have_content 'ログインに失敗しました'

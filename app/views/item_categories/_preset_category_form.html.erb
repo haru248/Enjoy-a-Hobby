@@ -1,0 +1,14 @@
+<%= form_with model: [preset, item_category], local: true do |f| %>
+  <div class = "category<%= item_category.id %>">
+  <div class = 'field'>
+    <%= f.text_field :item_category_name %>
+  </div>
+  <div class = 'actions'>
+    <%= f.submit %>
+    <% if item_category_exists?(item_category) %>
+      <%= link_to t('defaults.destroy'), preset_item_category_path(preset, item_category), method: :delete, data: {confirm: t('defaults.category_destroy_confirm', name: item_category.item_category_name)} %>
+    <% end %>
+  </div>
+  <br>
+  </div>
+<% end %>

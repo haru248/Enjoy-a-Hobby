@@ -39,7 +39,7 @@ RSpec.describe 'Profiles', type: :system do
       end
     end
     context 'パスワード変更ページ' do
-      before { visit new_profile_path }
+      before { visit password_reset_profile_path }
       context 'パスワード変更用メールの送信' do
         it 'パスワード変更用メールの送信がされる' do
           expect(page).to have_content user.email

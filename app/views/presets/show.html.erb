@@ -1,0 +1,35 @@
+<h1><%= t('.title') %></h1>
+
+<%= @preset.preset_name %>
+<%= link_to t('presets.edit.title'), edit_preset_path(@preset) %>
+<%= link_to t('.preset_destroy'), preset_path(@preset), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: @preset.preset_name)} %>
+<br>
+<br>
+<%= link_to t('.category_index'), preset_item_categories_path(@preset) %>
+<%= link_to t('.item_new'), new_preset_preset_item_path(@preset) %>
+<br>
+<br>
+<% if @item_categories.present? %>
+  <% @item_categories.each do |item_category| %>
+    <div class = "category<%= item_category.id %>">
+      <%= item_category.item_category_name %>
+      <br>
+      <br>
+      <% if item_category.preset_items.present? %>
+        <% item_category.preset_items.each do |preset_item| %>
+          <div class = "item<%= preset_item.id %>">
+            <%= preset_item.preset_item_name %>
+            <%= link_to t('defaults.edit'), edit_preset_preset_item_path(@preset, preset_item) %>
+            <%= link_to t('defaults.destroy'), preset_preset_item_path(@preset, preset_item), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: preset_item.preset_item_name)} %>
+            <br>
+            <br>
+          </div>
+        <% end %>
+      <% else %>
+        <p><%= t '.item_less' %></p>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p><%= t '.category_less' %></p>
+<% end %>

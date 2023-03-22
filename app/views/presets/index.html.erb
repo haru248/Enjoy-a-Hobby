@@ -1,0 +1,19 @@
+<h1><%= t '.title' %></h1>
+
+<%= render 'search', q: @q, url: presets_path %>
+
+<%= link_to t('presets.new.title'), new_preset_path %>
+<br>
+<br>
+
+<% if @presets.present? %>
+  <% @presets.each do |preset| %>
+    <%= preset.preset_name %>
+    <%= link_to t('defaults.show'), preset_path(preset) %>
+    <%= link_to t('defaults.destroy'), preset_path(preset), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: preset.preset_name)} %>
+    <br>
+  <% end %>
+  <%= paginate @presets %>
+<% else %>
+  <p><%= t '.preset_less' %></p>
+<% end %>

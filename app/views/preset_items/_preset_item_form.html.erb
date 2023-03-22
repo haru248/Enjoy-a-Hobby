@@ -1,0 +1,17 @@
+<%= form_with model: [preset, preset_item], local: true do |f| %>
+  <%= render 'shared/error_messages', model: preset_item %>
+  <div class = 'field'>
+    <%= f.label ItemCategory.human_attribute_name(:item_category_name) %><br />
+    <%= f.collection_select :item_category_id, preset.item_categories, :id, :item_category_name %>
+  </div>
+  <div class = 'field'>
+    <%= f.label :preset_item_name %><br />
+    <%= f.text_field :preset_item_name %>
+  </div>
+  <div class = 'actions'>
+    <%= f.submit %>
+    <% if preset_item__exists?(preset_item) %>
+      <%= link_to t('defaults.destroy'), preset_preset_item_path(preset, preset_item), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: preset_item.preset_item_name)} %>
+    <% end %>
+  </div>
+<% end %>

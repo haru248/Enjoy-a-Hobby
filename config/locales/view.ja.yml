@@ -1,16 +1,30 @@
 ja:
-  default:
+  defaults:
     app_name: 'LIVE Pl@nning'
     singin: 'ユーザー登録'
     login: 'ログイン'
     logout: 'ログアウト'
+    show: '詳細'
+    edit: '編集'
+    destroy: '削除'
+    destroy_confirm: "%{name}を削除してよろしいですか?"
+    category_destroy_confirm: "カテゴリーを削除すると、そのカテゴリーの持ち物も削除されます。%{name}を削除してよろしいですか?"
     register: '登録'
     send: '送信'
-    update: '更新'
+    save: '保存'
+    search: '検索'
+    record_not_found: 'アクセスしたページは存在しません'
     preset: 'プリセット'
     inventory_list: '持ち物リスト'
     purchase_list: '物販購入リスト'
     schedule: 'スケジュール'
+  helpers:
+    submit:
+      create: '作成'
+      update: '更新'
+    placeholder:
+      q:
+        preset_name_cont: '検索ワード'
   users:
     new:
       title: 'ユーザー登録'
@@ -39,23 +53,52 @@ ja:
       changed_password: 'パスワードを変更しました'
   presets:
     index:
+      title: 'プリセット一覧'
+      preset_less: 'プリセットがありません'
     new:
+      title: 'プリセット作成'
     create:
+      success: "%{name}を作成しました"
+      fail: 'プリセットの作成に失敗しました'
     show:
+      title: 'プリセット詳細'
+      preset_destroy: 'プリセット削除'
+      category_index: 'カテゴリーの追加・編集・削除'
+      item_new: '持ち物の追加'
+      category_less: '登録されたカテゴリーがありません'
+      item_less: 'このカテゴリーに登録された持ち物はありません'
     edit:
+      title: 'プリセット名編集'
     update:
+      success: "プリセット名を%{name}に変更しました"
+      fail: 'プリセット名の変更に失敗しました'
     destroy:
+      success: "%{name}を削除しました"
   item_categories:
-    edit:
+    index:
+      title: 'カテゴリー編集'
     create:
+      success: "%{name}を作成しました"
+      fail: 'カテゴリーの作成に失敗しました'
     update:
+      success: "カテゴリー名を%{name}に更新しました"
+      fail: "%{name}のカテゴリー名の変更に失敗しました"
     destroy:
+      success: "%{name}を削除しました"
   preset_items:
     new:
+      title: '持ち物追加'
+      category_less_alert: '持ち物の追加を行う場合、先にカテゴリーを1つ以上登録をしてください'
     create:
+      success: "%{item_name}を%{category_name}に追加しました"
+      fail: '持ち物の作成に失敗しました'
     edit:
+      title: '持ち物編集'
     update:
+      success: "%{name}の情報を更新しました"
+      fail: "%{name}の情報の更新に失敗しました"
     destroy:
+      success: "%{name}を削除しました"
   profiles:
     show:
       title: 'プロフィール'
@@ -65,7 +108,7 @@ ja:
     update:
       success: 'プロフィールを変更しました'
       fail: 'プロフィールの編集に失敗しました'
-    new:
+    password_reset:
       title: 'パスワード変更用メール送信'
       explanatory: '登録されているメールアドレスにパスワード変更用の
 メールを送信します。
