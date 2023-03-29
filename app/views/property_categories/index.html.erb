@@ -1,0 +1,10 @@
+<h1><%= t('.title') %></h1>
+
+<p><%= PropertyCategory.human_attribute_name(:category_name) %></p>
+<% if @property_categories.present? %>
+  <%= render partial: 'property_category_form', collection: @property_categories, as: 'property_category', locals: { inventory_list: @inventory_list } %>
+<% end %>
+
+<%= render 'property_category_form', { property_category: @property_category, inventory_list: @inventory_list } %>
+
+<%= link_to t('inventory_lists.show.property_new'), new_inventory_list_property_path(@inventory_list) %>

@@ -22,8 +22,8 @@ RSpec.describe ItemCategory, type: :model do
     it '別プリセット内に存在し、同一プリセット内には存在しないカテゴリー名の場合に適用されない' do
       item_category = create(:item_category)
       another_item_category = build(:item_category, item_category_name: item_category.item_category_name)
-      expect(item_category).to be_valid
-      expect(item_category.errors).to be_empty
+      expect(another_item_category).to be_valid
+      expect(another_item_category.errors).to be_empty
     end
   end
 end

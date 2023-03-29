@@ -1,6 +1,6 @@
 class ItemCategoriesController < ApplicationController
-  before_action :set_preset
   rescue_from ActiveRecord::RecordNotFound, with: :preset_record_not_found
+  before_action :set_preset
 
   def index
     @item_categories = @preset.item_categories.all.order(:created_at)

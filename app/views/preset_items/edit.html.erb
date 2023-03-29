@@ -1,3 +1,5 @@
 <h1><%= t '.title' %></h1>
 
 <%= render 'preset_item_form', { preset: @preset, preset_item: @preset_item } %>
+
+<%= link_to t('presets.show.category_index'), preset_item_categories_path(@preset) %>

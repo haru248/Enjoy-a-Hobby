@@ -5,6 +5,9 @@ ja:
       preset: 'プリセット'
       item_category: 'カテゴリー'
       preset_item: '持ち物'
+      inventory_list: '持ち物リスト'
+      property_category: 'カテゴリー'
+      property: '持ち物'
     attributes:
       user:
         id: 'ユーザーID'
@@ -21,6 +24,15 @@ ja:
       preset_item:
         id: 'プリセットアイテムID'
         preset_item_name: '持ち物名'
+      inventory_list:
+        id: '持ち物リストID'
+        inventory_list_name: '持ち物リスト名'
+      property_category:
+        id: 'カテゴリーID'
+        category_name: 'カテゴリー名'
+      property:
+        id: '持ち物ID'
+        property_name: '持ち物名'
   attributes:
     created_at: '作成日'
     updates_at: '更新日'

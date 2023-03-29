@@ -7,6 +7,7 @@ ja:
     show: '詳細'
     edit: '編集'
     destroy: '削除'
+    use: '使用'
     destroy_confirm: "%{name}を削除してよろしいですか?"
     category_destroy_confirm: "カテゴリーを削除すると、そのカテゴリーの持ち物も削除されます。%{name}を削除してよろしいですか?"
     register: '登録'
@@ -25,6 +26,7 @@ ja:
     placeholder:
       q:
         preset_name_cont: '検索ワード'
+        inventory_list_name_cont: '検索ワード'
   users:
     new:
       title: 'ユーザー登録'
@@ -99,6 +101,77 @@ ja:
       fail: "%{name}の情報の更新に失敗しました"
     destroy:
       success: "%{name}を削除しました"
+  inventory_lists:
+    index:
+      title: '持ち物リスト一覧'
+      list_less: '持ち物リストがありません'
+    new:
+      title: '持ち物リスト作成'
+    create:
+      success: "%{name}を作成しました"
+      fail: '持ち物リストの作成に失敗しました'
+    show:
+      title: '持ち物リスト詳細'
+      use_list: 'リスト使用'
+      list_destroy: '持ち物リスト削除'
+      category_index: 'カテゴリーの追加・編集・削除'
+      property_new: '持ち物の追加'
+      use_preset: 'プリセット使用'
+      category_less: '登録されたカテゴリーがありません'
+      property_less: 'このカテゴリーに登録された持ち物はありません'
+    edit:
+      title: '持ち物リスト名編集'
+    update:
+      success: "持ち物リスト名を%{name}に変更しました"
+      fail: '持ち物リスト名の変更に失敗しました'
+    destroy:
+      success: "%{name}を削除しました"
+    use:
+      title: '持ち物リスト使用'
+      checked_hide: 'チェックした持ち物を隠す'
+      not_checked_hide: 'チェックした持ち物を隠さない'
+      category_less: '登録されたカテゴリーがありません'
+      property_less: 'このカテゴリーに登録された持ち物はありません'
+  property_categories:
+    index:
+      title: 'カテゴリー編集'
+    create:
+      success: "%{name}を作成しました"
+      fail: 'カテゴリーの作成に失敗しました'
+    update:
+      success: "カテゴリー名を%{name}に更新しました"
+      fail: "%{name}のカテゴリー名の変更に失敗しました"
+    destroy:
+      success: "%{name}を削除しました"
+  properties:
+    new:
+      title: '持ち物追加'
+      category_less_alert: '持ち物の追加を行う場合、先にカテゴリーを1つ以上登録をしてください'
+    create:
+      success: "%{property_name}を%{category_name}に追加しました"
+      fail: '持ち物の作成に失敗しました'
+    edit:
+      title: '持ち物編集'
+    update:
+      success: "%{name}の情報を更新しました"
+      fail: "%{name}の情報の更新に失敗しました"
+    destroy:
+      success: "%{name}を削除しました"
+  use_presets:
+    index:
+      title: 'プリセット使用一覧'
+      preset_less: 'プリセットがありません'
+    show:
+      title: 'プリセットの内容確認'
+      edit_preset: 'プリセットの編集へ'
+      use_preset: 'このプリセットを使用する'
+      use_preset_confirm: "%{inventory_list_name}に%{preset_name}を適用してよろしいですか?"
+      category_less: '登録されたカテゴリーがありません'
+      item_less: 'このカテゴリーに登録された持ち物はありません'
+      property_less: 'このカテゴリーに登録された持ち物はありません'
+    update:
+      success: "%{preset_name}を反映しました"
+      preset_category_less: '使用しようとしたプリセットにカテゴリーが登録されていません'
   profiles:
     show:
       title: 'プロフィール'

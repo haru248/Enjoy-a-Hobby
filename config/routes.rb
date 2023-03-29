@@ -18,4 +18,10 @@ Rails.application.routes.draw do
     resources :item_categories, only: %i[index create update destroy]
     resources :preset_items, only: %i[new create edit update destroy]
   end
+  resources :inventory_lists do
+    get 'use', on: :member
+    resources :property_categories, only: %i[index create update destroy]
+    resources :properties, only: %i[new create edit update destroy]
+    resources :use_presets, only: %i[index show update]
+  end
 end
