@@ -69,5 +69,52 @@ RSpec.describe 'UsePresets', type: :system do
         end
       end
     end
+    context '使用プリセット選択' do
+      context '検索機能' do
+        context '存在するプリセット名を入力する' do
+          it '検索したプリセットが表示される' do
+            presets = create_list(:preset, 5, user: user)
+            visit inventory_list_use_presets_path(inventory_list)
+            preset = presets[0]
+            another_preset = presets[1]
+            fill_in 'q_preset_name_cont', with: preset.preset_name
+            click_button '検索'
+            expect(current_path).to eq inventory_list_use_presets_path(inventory_list)
+            expect(page).to have_content preset.preset_name
+            expect(page).not_to have_content another_preset.preset_name
+          end
+        end
+        context '存在しないプリセット名を入力する' do
+          it 'プリセットが表示されない' do
+            presets = create_list(:preset, 5, user: user)
+            visit inventory_list_use_presets_path(inventory_list)
+            preset = presets[0]
+            fill_in 'q_preset_name_cont', with: 'name_miss_preset'
+            click_button '検索'
+            expect(current_path).to eq inventory_list_use_presets_path(inventory_list)
+            expect(page).not_to have_content preset.preset_name
+          end
+        end
+      end
+      context 'ページネーション機能' do
+        context 'プリセットが16件以上' do
+          it 'ページネーションが表示され、正しく画面遷移する' do
+            presets = create_list(:preset, 20, user: user)
+            visit inventory_list_use_presets_path(inventory_list)
+            expect(page).to have_css '.page-item'
+            expect(page).not_to have_content presets[15].preset_name
+            click_on '次 ›'
+            expect(page).to have_content presets[15].preset_name
+          end
+        end
+        context 'プリセットが15件以下' do
+          it 'ページネーションが表示されない' do
+            presets = create_list(:preset, 14, user: user)
+            visit inventory_list_use_presets_path(inventory_list)
+            expect(page).not_to have_css '.page-item'
+          end
+        end
+      end
+    end
   end
 end
