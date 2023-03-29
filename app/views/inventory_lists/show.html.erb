@@ -1,0 +1,37 @@
+<h1><%= t('.title') %></h1>
+
+<%= @inventory_list.inventory_list_name %>
+<%= link_to t('.use_list'), use_inventory_list_path(@inventory_list), data: {'turbolinks' => false} %>
+<%= link_to t('inventory_lists.edit.title'), edit_inventory_list_path(@inventory_list) %>
+<%= link_to t('.list_destroy'), inventory_list_path(@inventory_list), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: @inventory_list.inventory_list_name)} %>
+<br>
+<br>
+<%= link_to t('.category_index'), inventory_list_property_categories_path(@inventory_list) %>
+<%= link_to t('.property_new'), new_inventory_list_property_path(@inventory_list) %>
+<%= link_to t('.use_preset'), inventory_list_use_presets_path(@inventory_list) %>
+<br>
+<br>
+<% if @property_categories.present? %>
+  <% @property_categories.each do |property_category| %>
+    <div class = "category<%= property_category.id %>">
+      <%= property_category.category_name %>
+      <br>
+      <br>
+      <% if property_category.properties.present? %>
+        <% property_category.properties.each do |property| %>
+          <div class = "property<%= property.id %>">
+            <%= property.property_name %>
+            <%= link_to t('defaults.edit'), edit_inventory_list_property_path(@inventory_list, property) %>
+            <%= link_to t('defaults.destroy'), inventory_list_property_path(@inventory_list, property), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: property.property_name)} %>
+            <br>
+            <br>
+          </div>
+        <% end %>
+      <% else %>
+        <p><%= t '.property_less' %></p>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p><%= t '.category_less' %></p>
+<% end %>

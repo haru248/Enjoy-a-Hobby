@@ -6,3 +6,5 @@
 <% end %>
 
 <%= render 'preset_category_form', { item_category: @item_category, preset: @preset } %>
+
+<%= link_to t('presets.show.item_new'), new_preset_preset_item_path(@preset) %>

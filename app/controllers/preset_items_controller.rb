@@ -1,6 +1,6 @@
 class PresetItemsController < ApplicationController
-  before_action :set_preset
   rescue_from ActiveRecord::RecordNotFound, with: :preset_record_not_found
+  before_action :set_preset
 
   def new
     redirect_to preset_item_categories_path(@preset), alert: t('.category_less_alert') unless @preset.item_categories.present?

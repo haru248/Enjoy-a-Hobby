@@ -28,6 +28,7 @@ RSpec.describe 'PresetItems', type: :system do
             fill_in 'preset_item_preset_item_name', with: ''
             click_button '作成'
             expect(page).to have_content '持ち物の作成に失敗しました'
+            expect(page).to have_content '持ち物名を入力してください'
           end
         end
       end

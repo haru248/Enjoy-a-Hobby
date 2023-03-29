@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_13_112238) do
+ActiveRecord::Schema.define(version: 2023_03_22_110717) do
+
+  create_table "inventory_lists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "inventory_list_name", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_inventory_lists_on_user_id"
+  end
 
   create_table "item_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "item_category_name", null: false
@@ -37,6 +45,23 @@ ActiveRecord::Schema.define(version: 2023_03_13_112238) do
     t.index ["user_id"], name: "index_presets_on_user_id"
   end
 
+  create_table "properties", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "property_name", null: false
+    t.bigint "property_category_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_category_id"], name: "index_properties_on_property_category_id"
+  end
+
+  create_table "property_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "category_name", null: false
+    t.bigint "inventory_list_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_name", "inventory_list_id"], name: "index_property_categories_on_category_name_and_inventory_list_id", unique: true
+    t.index ["inventory_list_id"], name: "index_property_categories_on_inventory_list_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "user_name", null: false
     t.string "email", null: false
@@ -52,7 +77,10 @@ ActiveRecord::Schema.define(version: 2023_03_13_112238) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
+  add_foreign_key "inventory_lists", "users"
   add_foreign_key "item_categories", "presets"
   add_foreign_key "preset_items", "item_categories"
   add_foreign_key "presets", "users"
+  add_foreign_key "properties", "property_categories"
+  add_foreign_key "property_categories", "inventory_lists"
 end

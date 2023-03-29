@@ -5,6 +5,7 @@ require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'rspec/retry'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -73,6 +74,15 @@ RSpec.configure do |config|
   end
   config.after(:all) do
     DatabaseCleaner.clean
+  end
+
+  # 実行中にリトライのステータスを表示する
+  config.verbose_retry = true
+  # リトライの原因となった例外を表示する
+  config.display_try_failure_messages = true
+
+  config.around do |ex|
+    ex.run_with_retry retry: 3, retry_wait: 1
   end
 
   config.include FactoryBot::Syntax::Methods

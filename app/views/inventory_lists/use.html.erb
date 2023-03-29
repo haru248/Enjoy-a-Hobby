@@ -1,0 +1,38 @@
+<h1><%= t('.title') %></h1>
+
+<%= javascript_pack_tag 'inventory_list_use' %>
+
+<%= form_with do |f| %>
+  <%= f.label :checked_hide, t('.not_checked_hide'), value: false, name: 'not_hide_rbtn' %>
+  <%= f.radio_button :checked_hide, 'false', { checked: true } %>
+  <br>
+  <%= f.label :checked_hide, t('.checked_hide'), value: true, name: 'hide_rbtn' %>
+  <%= f.radio_button :checked_hide, 'true' %>
+<% end %>
+<br>
+
+<%= @inventory_list.inventory_list_name %>
+<br>
+<br>
+<% if @property_categories.present? %>
+  <% @property_categories.each do |property_category| %>
+    <div class = "category<%= property_category.id %>">
+      <%= label_tag 'property_category[category_name]', property_category.category_name %>
+      <% if property_category.properties.present? %>
+        <% property_category.properties.each do |property| %>
+          <div class = "property property<%= property.id %>">
+            <%= label_tag 'property[property_name]' do %>
+              <%= check_box_tag :check, "property#{property.id}" %>
+              <%= property.property_name %>
+            <% end %>
+            <br>
+          </div>
+        <% end %>
+      <% else %>
+        <p><%= t '.property_less' %></p>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p><%= t '.category_less' %></p>
+<% end %>

@@ -1,0 +1,17 @@
+<%= form_with model: [inventory_list, property], local: true do |f| %>
+  <%= render 'shared/error_messages', model: property %>
+  <div class = 'field'>
+    <%= f.label PropertyCategory.human_attribute_name(:category_name) %><br />
+    <%= f.collection_select :property_category_id, inventory_list.property_categories, :id, :category_name %>
+  </div>
+  <div class = 'field'>
+    <%= f.label :property_name %><br />
+    <%= f.text_field :property_name %>
+  </div>
+  <div class = 'actions'>
+    <%= f.submit %>
+    <% if property_exists?(property) %>
+      <%= link_to t('defaults.destroy'), inventory_list_property_path(inventory_list, property), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: property.property_name)} %>
+    <% end %>
+  </div>
+<% end %>

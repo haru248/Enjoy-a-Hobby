@@ -1,0 +1,10 @@
+<%= form_with model: inventory_list, local: true do |f| %>
+  <%= render 'shared/error_messages', model: inventory_list %>
+  <div class = 'field'>
+    <%= f.label :inventory_list_name %><br />
+    <%= f.text_field :inventory_list_name %>
+  </div>
+  <div class = 'actions'>
+    <%= f.submit %>
+  </div>
+<% end %>

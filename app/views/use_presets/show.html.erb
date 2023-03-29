@@ -1,0 +1,61 @@
+<h1><%= t('.title') %></h1>
+
+<%= @preset.preset_name %>
+<br>
+<br>
+<%= link_to t('.edit_preset'), preset_path(@preset) %>
+<%= link_to t('.use_preset'), inventory_list_use_preset_path(@inventory_list, @preset),
+                              method: :patch,
+                              data: {confirm: t('.use_preset_confirm', inventory_list_name: @inventory_list.inventory_list_name, preset_name: @preset.preset_name)} %>
+<br>
+<br>
+<% if @item_categories.present? %>
+  <% @item_categories.each do |item_category| %>
+    <div class = "category<%= item_category.id %>">
+      <%= item_category.item_category_name %>
+      <br>
+      <br>
+      <% if item_category.preset_items.present? %>
+        <% item_category.preset_items.each do |preset_item| %>
+          <div class = "item<%= preset_item.id %>">
+            <%= preset_item.preset_item_name %>
+            <br>
+            <br>
+          </div>
+        <% end %>
+      <% else %>
+        <p><%= t '.item_less' %></p>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p><%= t '.category_less' %></p>
+<% end %>
+
+<br>
+<br>
+<%= @inventory_list.inventory_list_name %>
+<br>
+<br>
+<% if @property_categories.present? %>
+  <% @property_categories.each do |property_category| %>
+    <div class = "category<%= property_category.id %>">
+      <%= property_category.category_name %>
+      <br>
+      <br>
+      <% if property_category.properties.present? %>
+        <% property_category.properties.each do |property| %>
+          <div class = "property<%= property.id %>">
+            <%= property.property_name %>
+            <br>
+            <br>
+          </div>
+        <% end %>
+      <% else %>
+        <p><%= t '.property_less' %></p>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p><%= t '.category_less' %></p>
+<% end %>
