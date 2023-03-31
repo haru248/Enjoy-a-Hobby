@@ -93,6 +93,7 @@ RSpec.describe 'UsePresets', type: :system do
             click_button '検索'
             expect(current_path).to eq inventory_list_use_presets_path(inventory_list)
             expect(page).not_to have_content preset.preset_name
+            expect(page).to have_content 'プリセットがありません'
           end
         end
       end

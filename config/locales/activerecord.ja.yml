@@ -33,6 +33,14 @@ ja:
       property:
         id: '持ち物ID'
         property_name: '持ち物名'
+      purchase_list:
+        id: '物販購入リストID'
+        purchase_list_name: '物販購入リスト名'
+      purchase:
+        id: '購入品ID'
+        purchase_name: '購入品名'
+        price: '値段'
+        quantity: '個数'
   attributes:
     created_at: '作成日'
     updates_at: '更新日'

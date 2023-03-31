@@ -24,4 +24,7 @@ Rails.application.routes.draw do
     resources :properties, only: %i[new create edit update destroy]
     resources :use_presets, only: %i[index show update]
   end
+  resources :purchase_lists do
+    resources :purchases, only: %i[new create edit update destroy]
+  end
 end

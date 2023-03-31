@@ -15,6 +15,8 @@ ja:
     save: '保存'
     search: '検索'
     record_not_found: 'アクセスしたページは存在しません'
+    yen: '円'
+    quantity: '個'
     preset: 'プリセット'
     inventory_list: '持ち物リスト'
     purchase_list: '物販購入リスト'
@@ -27,6 +29,7 @@ ja:
       q:
         preset_name_cont: '検索ワード'
         inventory_list_name_cont: '検索ワード'
+        purchase_list_name_cont: '検索ワード'
   users:
     new:
       title: 'ユーザー登録'
@@ -172,6 +175,42 @@ ja:
     update:
       success: "%{preset_name}を反映しました"
       preset_category_less: '使用しようとしたプリセットにカテゴリーが登録されていません'
+  purchase_lists:
+    index:
+      title: '物販購入リスト'
+      list_less: '物販購入リストがありません'
+    new:
+      title: '物販購入リスト作成'
+    create:
+      success: "%{name}を作成しました"
+      fail: '物販購入リストの作成に失敗しました'
+    show:
+      title: '物販購入リスト詳細'
+      list_destroy: '物販購入リスト削除'
+      purchase_new: '購入品の追加'
+      amount: '金額'
+      sum_amount: '合計金額'
+      purchase_less: '購入品が登録されていません'
+    edit:
+      title: '物販購入リスト名編集'
+    update:
+      success: "物販購入リスト名を%{name}に変更しました"
+      fail: '物販購入リスト名の変更に失敗しました'
+    destroy:
+      success: "%{name}を削除しました"
+  purchases:
+    new:
+      title: '購入品追加'
+    create:
+      success: "%{name}を追加しました"
+      fail: '購入品の作成に失敗しました'
+    edit:
+      title: '購入品編集'
+    update:
+      success: "%{name}の情報を更新しました"
+      fail: "%{name}の情報の更新に失敗しました"
+    destroy:
+      success: "%{name}を削除しました"
   profiles:
     show:
       title: 'プロフィール'

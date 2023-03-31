@@ -5,7 +5,7 @@
     </div>
     <div class = 'actions'>
       <%= f.submit %>
-      <% if item_category_exists?(item_category) %>
+      <% if item_category.edit? %>
         <%= link_to t('defaults.destroy'), preset_item_category_path(preset, item_category), method: :delete, data: {confirm: t('defaults.category_destroy_confirm', name: item_category.item_category_name)} %>
       <% end %>
     </div>

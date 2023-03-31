@@ -1,0 +1,19 @@
+<h1><%= t '.title' %></h1>
+
+<%= render 'search', q: @q, url: purchase_lists_path %>
+
+<%= link_to t('purchase_lists.new.title'), new_purchase_list_path %>
+<br>
+<br>
+
+<% if @purchase_lists.present? %>
+  <% @purchase_lists.each do |purchase_list| %>
+    <%= purchase_list.purchase_list_name %>
+    <%= link_to t('defaults.show'), purchase_list_path(purchase_list) %>
+    <%= link_to t('defaults.destroy'), purchase_list_path(purchase_list), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: purchase_list.purchase_list_name)} %>
+    <br>
+  <% end %>
+  <%= paginate @purchase_lists %>
+<% else %>
+  <p><%= t '.list_less' %></p>
+<% end %>

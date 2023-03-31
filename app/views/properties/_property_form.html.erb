@@ -10,7 +10,7 @@
   </div>
   <div class = 'actions'>
     <%= f.submit %>
-    <% if property_exists?(property) %>
+    <% if property.edit? %>
       <%= link_to t('defaults.destroy'), inventory_list_property_path(inventory_list, property), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: property.property_name)} %>
     <% end %>
   </div>
