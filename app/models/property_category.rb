@@ -7,4 +7,8 @@ class PropertyCategory < ApplicationRecord
   def self.find_category(name)
     find_by(category_name: name)
   end
+
+  def edit?
+    PropertyCategory.exists?(id: id)
+  end
 end

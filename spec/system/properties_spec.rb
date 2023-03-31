@@ -78,7 +78,7 @@ RSpec.describe 'Properties', type: :system do
     context '持ち物削除' do
       let!(:category) { create(:property_category, inventory_list: inventory_list) }
       let!(:property) { create(:property, property_category: category) }
-      context 'プリセット詳細ページ' do
+      context '持ち物リスト詳細ページ' do
         it '持ち物の削除に成功する' do
           visit inventory_list_path(inventory_list)
           within ".property#{property.id}" do

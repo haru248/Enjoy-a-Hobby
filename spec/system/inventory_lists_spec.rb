@@ -48,6 +48,7 @@ RSpec.describe 'InventoryLists', type: :system do
             click_button '検索'
             expect(current_path).to eq inventory_lists_path
             expect(page).not_to have_content inventory_list.inventory_list_name
+            expect(page).to have_content '持ち物リストがありません'
           end
         end
       end

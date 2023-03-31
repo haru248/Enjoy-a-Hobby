@@ -10,7 +10,7 @@
   </div>
   <div class = 'actions'>
     <%= f.submit %>
-    <% if preset_item__exists?(preset_item) %>
+    <% if preset_item.edit? %>
       <%= link_to t('defaults.destroy'), preset_preset_item_path(preset, preset_item), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: preset_item.preset_item_name)} %>
     <% end %>
   </div>

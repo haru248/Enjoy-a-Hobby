@@ -1,0 +1,21 @@
+<%= form_with model: [purchase_list, purchase], local: true do |f| %>
+  <%= render 'shared/error_messages', model: purchase %>
+  <div class = 'field'>
+    <%= f.label :purchase_name %><br />
+    <%= f.text_field :purchase_name %>
+  </div>
+  <div class = 'field'>
+    <%= f.label :price %><br />
+    <%= f.number_field :price, min: 0 %>
+  </div>
+  <div class = 'field'>
+    <%= f.label :quantity %><br />
+    <%= f.number_field :quantity, min: 1 %>
+  </div>
+  <div class = 'actions'>
+    <%= f.submit %>
+    <% if purchase.edit? %>
+      <%= link_to t('defaults.destroy'), purchase_list_purchase_path(purchase_list, purchase), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: purchase.purchase_name)} %>
+    <% end %>
+  </div>
+<% end %>

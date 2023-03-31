@@ -1,0 +1,10 @@
+<%= form_with model: purchase_list, local: true do |f| %>
+  <%= render 'shared/error_messages', model: purchase_list %>
+  <div class = 'field'>
+    <%= f.label :purchase_list_name %><br />
+    <%= f.text_field :purchase_list_name %>
+  </div>
+  <div class = 'actions'>
+    <%= f.submit %>
+  </div>
+<% end %>

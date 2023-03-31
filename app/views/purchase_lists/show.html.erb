@@ -1,0 +1,35 @@
+<h1><%= t('.title') %></h1>
+
+<%= @purchase_list.purchase_list_name %>
+<%= link_to t('purchase_lists.edit.title'), edit_purchase_list_path(@purchase_list) %>
+<%= link_to t('.list_destroy'), purchase_list_path(@purchase_list), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: @purchase_list.purchase_list_name)} %>
+<br>
+<br>
+<%= link_to t('.purchase_new'), new_purchase_list_purchase_path(@purchase_list) %>
+<br>
+<br>
+<% if @purchases.present? %>
+  <%= Purchase.human_attribute_name(:purchase_name) %>
+  <%= Purchase.human_attribute_name(:price) %>
+  <%= Purchase.human_attribute_name(:quantity) %>
+  <%= t('.amount') %>
+  <br>
+  <br>
+  <% @purchases.each do |purchase| %>
+    <div class = "purchase<%= purchase.id %>">
+      <%= purchase.purchase_name %>
+      <%= "#{purchase.price.to_s(:delimited)}#{t('defaults.yen')}" %>
+      <%= "#{purchase.quantity}#{t('defaults.quantity')}" %>
+      <%= "#{purchase.amount.to_s(:delimited)}#{t('defaults.yen')}" %>
+      <%= link_to t('defaults.edit'), edit_purchase_list_purchase_path(@purchase_list, purchase) %>
+      <%= link_to t('defaults.destroy'), purchase_list_purchase_path(@purchase_list, purchase), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: purchase.purchase_name)} %>
+    </div>
+  <% end %>
+  <br>
+  <%= t('.sum_amount') %>
+  <%= sum_amount(@purchases) %>
+  <br>
+  <br>
+<% else %>
+  <p><%= t '.purchase_less' %></p>
+<% end %>

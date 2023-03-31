@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_22_110717) do
+ActiveRecord::Schema.define(version: 2023_03_29_082457) do
 
   create_table "inventory_lists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "inventory_list_name", null: false
@@ -62,6 +62,24 @@ ActiveRecord::Schema.define(version: 2023_03_22_110717) do
     t.index ["inventory_list_id"], name: "index_property_categories_on_inventory_list_id"
   end
 
+  create_table "purchase_lists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "purchase_list_name", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_purchase_lists_on_user_id"
+  end
+
+  create_table "purchases", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "purchase_name", null: false
+    t.integer "price", null: false
+    t.integer "quantity", null: false
+    t.bigint "purchase_list_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["purchase_list_id"], name: "index_purchases_on_purchase_list_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "user_name", null: false
     t.string "email", null: false
@@ -83,4 +101,6 @@ ActiveRecord::Schema.define(version: 2023_03_22_110717) do
   add_foreign_key "presets", "users"
   add_foreign_key "properties", "property_categories"
   add_foreign_key "property_categories", "inventory_lists"
+  add_foreign_key "purchase_lists", "users"
+  add_foreign_key "purchases", "purchase_lists"
 end

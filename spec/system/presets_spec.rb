@@ -48,6 +48,7 @@ RSpec.describe 'Presets', type: :system do
             click_button '検索'
             expect(current_path).to eq presets_path
             expect(page).not_to have_content preset.preset_name
+            expect(page).to have_content 'プリセットがありません'
           end
         end
       end
