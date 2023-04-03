@@ -1,0 +1,34 @@
+ja:
+  default:
+    preset:
+      daily_preset: '日用品(デフォルト)'
+      clothing_preset: '衣類(デフォルト)'
+      live_preset: 'ライブ関係(デフォルト)'
+      valuables_preset: '貴重品(デフォルト)'
+    item_category:
+      daily_category: '日用品'
+      clothing_category: '衣類'
+      live_category: 'ライブ関係'
+      valuables_category: '貴重品'
+    daily_item:
+      charger: '充電器'
+      mobile_battery: 'モバイルバッテリー'
+      handkerchief: 'ハンカチ'
+      tissue: 'ティッシュ'
+      medicine: '常備薬'
+      rain_gear: '雨具'
+    clothing_item:
+      change_clothes: '着替え'
+      towel: 'タオル'
+      cold_weather_gear: '防寒具'
+    live_item:
+      ticket: 'チケット'
+      penlight: 'ペンライト'
+      battery: '電池'
+      live_T_shirt: 'ライブTシャツ'
+      live_towel: 'ライブタオル'
+    valuables_item:
+      wallet: '財布'
+      identification: '身分証明'
+      IC_card: 'ICカード'
+      smart_phone: 'スマホ'

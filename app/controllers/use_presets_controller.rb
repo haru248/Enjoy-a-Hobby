@@ -17,18 +17,22 @@ class UsePresetsController < ApplicationController
     @preset = current_user.presets.find(params[:id])
     @item_categories = @preset.item_categories.includes(:preset_items).order(:created_at)
     if @item_categories.present?
-      ActiveRecord::Base.transaction do
-        @item_categories.each do |item_category|
-          property_category = @inventory_list.property_categories.find_category(item_category.item_category_name)
-          property_category = @inventory_list.property_categories.create!(category_name: item_category.item_category_name) if property_category.nil?
-          if item_category.preset_items.present?
-            item_category.preset_items.each do |preset_item|
-              property_category.properties.create!(property_name: preset_item.preset_item_name)
+      begin
+        ActiveRecord::Base.transaction do
+          @item_categories.each do |item_category|
+            property_category = @inventory_list.property_categories.find_category(item_category.item_category_name)
+            property_category = @inventory_list.property_categories.create!(category_name: item_category.item_category_name) if property_category.nil?
+            if item_category.preset_items.present?
+              item_category.preset_items.each do |preset_item|
+                property_category.properties.create!(property_name: preset_item.preset_item_name)
+              end
             end
           end
         end
+        redirect_to inventory_list_path(@inventory_list), notice: t('.success', preset_name: @preset.preset_name)
+      rescue
+        redirect_to inventory_list_use_preset_path(@inventory_list, @preset), alert: t('.missing_use_preset')
       end
-      redirect_to inventory_list_path(@inventory_list), notice: t('.success', preset_name: @preset.preset_name)
     else
       redirect_to inventory_list_use_preset_path(@inventory_list, @preset), alert: t('.preset_category_less')
     end

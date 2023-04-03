@@ -8,10 +8,12 @@
 
 <% if @presets.present? %>
   <% @presets.each do |preset| %>
-    <%= preset.preset_name %>
-    <%= link_to t('defaults.show'), preset_path(preset) %>
-    <%= link_to t('defaults.destroy'), preset_path(preset), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: preset.preset_name)} %>
-    <br>
+    <div class = "preset<%= preset.id %>">
+      <%= preset.preset_name %>
+      <%= link_to t('defaults.show'), preset_path(preset) %>
+      <%= link_to t('defaults.destroy'), preset_path(preset), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: preset.preset_name)} %>
+      <br>
+    </div>
   <% end %>
   <%= paginate @presets %>
 <% else %>

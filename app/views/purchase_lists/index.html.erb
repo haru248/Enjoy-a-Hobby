@@ -8,10 +8,12 @@
 
 <% if @purchase_lists.present? %>
   <% @purchase_lists.each do |purchase_list| %>
-    <%= purchase_list.purchase_list_name %>
-    <%= link_to t('defaults.show'), purchase_list_path(purchase_list) %>
-    <%= link_to t('defaults.destroy'), purchase_list_path(purchase_list), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: purchase_list.purchase_list_name)} %>
-    <br>
+    <div class = "purchase_list<%= purchase_list.id %>">
+      <%= purchase_list.purchase_list_name %>
+      <%= link_to t('defaults.show'), purchase_list_path(purchase_list) %>
+      <%= link_to t('defaults.destroy'), purchase_list_path(purchase_list), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: purchase_list.purchase_list_name)} %>
+      <br>
+    </div>
   <% end %>
   <%= paginate @purchase_lists %>
 <% else %>
