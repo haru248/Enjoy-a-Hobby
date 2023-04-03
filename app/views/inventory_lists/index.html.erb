@@ -8,10 +8,12 @@
 
 <% if @inventory_lists.present? %>
   <% @inventory_lists.each do |inventory_list| %>
-    <%= inventory_list.inventory_list_name %>
-    <%= link_to t('defaults.show'), inventory_list_path(inventory_list) %>
-    <%= link_to t('defaults.destroy'), inventory_list_path(inventory_list), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: inventory_list.inventory_list_name)} %>
-    <br>
+    <div class = "inventory_list<%= inventory_list.id %>">
+      <%= inventory_list.inventory_list_name %>
+      <%= link_to t('defaults.show'), inventory_list_path(inventory_list) %>
+      <%= link_to t('defaults.destroy'), inventory_list_path(inventory_list), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: inventory_list.inventory_list_name)} %>
+      <br>
+    </div>
   <% end %>
   <%= paginate @inventory_lists %>
 <% else %>

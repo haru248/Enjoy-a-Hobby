@@ -82,7 +82,7 @@ RSpec.configure do |config|
   config.display_try_failure_messages = true
 
   config.around do |ex|
-    ex.run_with_retry retry: 3, retry_wait: 1
+    ex.run_with_retry retry: 2, retry_wait: 1
   end
 
   config.include FactoryBot::Syntax::Methods

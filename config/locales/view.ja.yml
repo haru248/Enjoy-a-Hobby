@@ -37,6 +37,7 @@ ja:
     create:
       success: 'ユーザー登録が完了しました'
       fail: 'ユーザー登録に失敗しました'
+      missing_create_default_preset: 'ユーザー登録は成功しましたがデフォルトのプリセットの作成に失敗しました'
   user_sessions:
     new:
       title: 'ログイン'
@@ -174,6 +175,7 @@ ja:
       property_less: 'このカテゴリーに登録された持ち物はありません'
     update:
       success: "%{preset_name}を反映しました"
+      missing_use_preset: 'プリセットの反映時になんらかのエラーが発生したため、処理をロールバックしました。頻発する場合はお問い合せください。'
       preset_category_less: '使用しようとしたプリセットにカテゴリーが登録されていません'
   purchase_lists:
     index:

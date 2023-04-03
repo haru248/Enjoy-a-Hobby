@@ -4,7 +4,9 @@ class Preset < ApplicationRecord
 
   validates :preset_name, presence: true
 
-  private
+  def create_default_category(kinds)
+    item_categories.create!(item_category_name: I18n.t("default.item_category.#{kinds}_category"))
+  end
 
   def self.ransackable_attributes(auth_object = nil)
     ['preset_name']
