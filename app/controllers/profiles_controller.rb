@@ -14,6 +14,11 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy!
+    redirect_to root_path, notice: t('.success')
+  end
+
   def password_reset; end
 
   def create

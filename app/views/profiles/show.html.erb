@@ -9,3 +9,4 @@
 <br>
 <%= link_to t('profiles.edit.title'), edit_profile_path %>
 <%= link_to t('profiles.password_reset.title'), password_reset_profile_path %>
+<%= link_to t('.user_destroy'), profile_path, method: :delete, data: {confirm: t('.user_destroy_confirm')} %>
