@@ -219,12 +219,16 @@ ja:
   profiles:
     show:
       title: 'プロフィール'
+      user_destroy: 'アカウント削除'
+      user_destroy_confirm: 'アカウント削除後、アカウントの復旧はできません。本当に削除してもよろしいですか?'
     edit:
       title: 'プロフィール編集'
       password_reset: 'パスワード変更'
     update:
       success: 'プロフィールを変更しました'
       fail: 'プロフィールの編集に失敗しました'
+    destroy:
+      success: 'アカウントを削除しました'
     password_reset:
       title: 'パスワード変更用メール送信'
       explanatory: '登録されているメールアドレスにパスワード変更用の

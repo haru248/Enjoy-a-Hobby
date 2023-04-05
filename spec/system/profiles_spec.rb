@@ -51,5 +51,23 @@ RSpec.describe 'Profiles', type: :system do
         end
       end
     end
+    context 'アカウント削除' do
+      let!(:preset) { create(:preset, user: user) }
+      let!(:inventory_list) { create(:inventory_list, user: user) }
+      let!(:purchase_list) { create(:purchase_list, user: user) }
+      it 'プロフィール詳細ページでアカウント削除をクリックした場合アカウントが削除される' do
+        visit profile_path
+        click_on 'アカウント削除'
+        expect(page.accept_confirm).to eq 'アカウント削除後、アカウントの復旧はできません。本当に削除してもよろしいですか?'
+        expect(current_path).to eq root_path
+        expect(page).not_to have_content 'プロフィール'
+        expect(page).not_to have_content 'ログアウト'
+        expect(page).to have_content 'ユーザー登録'
+        expect(page).to have_content 'ログイン'
+        expect(Preset.find_by(id: preset.id)).to be nil
+        expect(InventoryList.find_by(id: inventory_list.id)).to be nil
+        expect(PurchaseList.find_by(id: purchase_list.id)).to be nil
+      end
+    end
   end
 end
