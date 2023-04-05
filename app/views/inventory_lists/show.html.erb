@@ -1,3 +1,5 @@
+<% content_for(:title, @inventory_list.inventory_list_name) %>
+<% breadcrumb :inventory_list_show, @inventory_list %>
 <h1><%= t('.title') %></h1>
 
 <%= @inventory_list.inventory_list_name %>

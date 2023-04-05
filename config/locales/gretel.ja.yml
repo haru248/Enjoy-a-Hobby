@@ -1,0 +1,36 @@
+ja:
+  gretel:
+    mypage: 'マイページ'
+    top: 'トップページ'
+    user_new: 'ユーザー登録'
+    login: 'ログイン'
+    password_reset_new: 'パスワードリセット'
+    terms_of_service: '利用規約'
+    privacy_policy: 'プライバシーポリシー'
+    inquiry: '問い合わせ'
+    preset_index: 'プリセット一覧'
+    preset_new: 'プリセット作成'
+    preset_show: "%{name}"
+    preset_edit: 'プリセット名編集'
+    item_category_index: 'カテゴリー編集'
+    preset_item_new: '持ち物追加'
+    preset_item_edit: "%{name}編集"
+    inventory_list_index: '持ち物リスト一覧'
+    inventory_list_new: '持ち物リスト作成'
+    inventory_list_show: "%{name}"
+    inventory_list_edit: 'リスト名編集'
+    inventory_list_use: 'リスト使用'
+    property_category_index: 'カテゴリー編集'
+    property_new: '持ち物追加'
+    property_edit: "%{name}編集"
+    use_preset_index: '使用プリセット一覧'
+    use_preset_show: "%{name}確認"
+    purchase_list_index: '物販購入リスト一覧'
+    purchase_list_new: '物販購入リスト作成'
+    purchase_list_show: "%{name}"
+    purchase_list_edit: 'リスト名編集'
+    purchase_new: '購入品追加'
+    purchase_edit: "%{name}編集"
+    profile_show: 'プロフィール確認'
+    profile_edit: '編集'
+    profile_password_reset: 'パスワードリセット'

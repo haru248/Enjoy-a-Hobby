@@ -1,3 +1,5 @@
+<% content_for(:title, @inventory_list.inventory_list_name + t('defaults.use')) %>
+<% breadcrumb :inventory_list_use, @inventory_list %>
 <h1><%= t('.title') %></h1>
 
 <%= javascript_pack_tag 'inventory_list_use' %>

@@ -1,3 +1,5 @@
+<% content_for(:title, t('.title')) %>
+<% breadcrumb :password_reset_new %>
 <h1><%= t '.title' %></h1>
 <%= form_with url: password_resets_path, local: true, method: :post do |form| %>
   <div class="field">

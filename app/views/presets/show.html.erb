@@ -1,3 +1,5 @@
+<% content_for(:title, @preset.preset_name) %>
+<% breadcrumb :preset_show, @preset %>
 <h1><%= t('.title') %></h1>
 
 <%= @preset.preset_name %>

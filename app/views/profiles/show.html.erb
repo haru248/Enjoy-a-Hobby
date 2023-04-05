@@ -1,3 +1,5 @@
+<% content_for(:title, t('.title')) %>
+<% breadcrumb :profile_show %>
 <h1><%= t '.title' %></h1>
 
 <p><%= User.human_attribute_name(:user_name) %></p>

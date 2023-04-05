@@ -1,3 +1,5 @@
+<% content_for(:title, t('.title')) %>
+<% breadcrumb :use_preset_show, @inventory_list, @preset %>
 <h1><%= t('.title') %></h1>
 
 <%= @preset.preset_name %>

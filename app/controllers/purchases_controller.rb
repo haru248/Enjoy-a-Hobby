@@ -26,7 +26,7 @@ class PurchasesController < ApplicationController
       redirect_to purchase_list_path(@purchase_list), notice: t('.success', name: @purchase.purchase_name)
     else
       flash.now[:alert] = t('.fail', name: Purchase.find(@purchase.id).purchase_name)
-      render :new
+      render :edit
     end
   end
 

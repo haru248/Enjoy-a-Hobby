@@ -1,3 +1,5 @@
+<% content_for(:title, t('.title')) %>
+<% breadcrumb :purchase_list_edit, @purchase_list %>
 <h1><%= t '.title' %></h1>
 
 <%= render 'list_name_form', purchase_list: @purchase_list %>

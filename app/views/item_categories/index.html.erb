@@ -1,3 +1,5 @@
+<% content_for(:title, t('.title')) %>
+<% breadcrumb :item_category_index, @preset %>
 <h1><%= t('.title') %></h1>
 
 <p><%= ItemCategory.human_attribute_name(:item_category_name) %></p>
