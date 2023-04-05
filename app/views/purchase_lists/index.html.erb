@@ -1,3 +1,5 @@
+<% content_for(:title, t('.title')) %>
+<% breadcrumb :purchase_list_index %>
 <h1><%= t '.title' %></h1>
 
 <%= render 'search', q: @q, url: purchase_lists_path %>

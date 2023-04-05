@@ -1,3 +1,5 @@
+<% content_for(:title, t('.title')) %>
+<% breadcrumb :preset_edit, @preset %>
 <h1><%= t('.title') %></h1>
 
 <%= render 'preset_name_form', preset: @preset %>

@@ -1,3 +1,5 @@
+<% content_for(:title, t('.title')) %>
+<% breadcrumb :property_edit, @inventory_list, @property %>
 <h1><%= t '.title' %></h1>
 
 <%= render 'property_form', { inventory_list: @inventory_list, property: @property } %>
