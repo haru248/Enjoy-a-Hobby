@@ -1,16 +1,19 @@
 <% content_for(:title, t('.title')) %>
-<div class = 'text-center login_form'>
-  <%= form_with url: login_path, method: :post, local: true, class: 'form' do |f| %>
-    <h1 class = 'h3 mb-3 font-weight-normal'><%= t '.title' %></h1>
+<% breadcrumb :login %>
+<h1><%= t '.title' %></h1>
 
-    <%= f.label User.human_attribute_name(:email), class: 'sr-only' %>
-    <%= f.email_field :email, class: 'form-control', placeholder: User.human_attribute_name(:email) %>
-
-    <%= f.label User.human_attribute_name(:password), class: 'sr-only' %>
-    <%= f.password_field :password, class: 'form-control', placeholder: User.human_attribute_name(:password) %><br>
-    
-    <%= f.submit t('defaults.login'), class: 'btn btn-lg btn-primary btn-block' %><br>
-
-    <%= link_to t('.forget_password'), new_password_reset_path %>
-  <% end %>
-</div>
+<%= form_with url: login_path, method: :post, local: true do |f| %>
+  <div class = 'field'>
+    <%= f.label User.human_attribute_name(:email) %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class = 'field'>
+    <%= f.label User.human_attribute_name(:password) %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class = 'actions'>
+    <%= f.submit t('defaults.login') %>
+  </div>
+<% end %>
+<%= link_to t('.forget_password'), new_password_reset_path %>
+<%= link_to t('defaults.singin'), new_user_path %>

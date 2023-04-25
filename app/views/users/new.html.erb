@@ -1,21 +1,28 @@
 <% content_for(:title, t('.title')) %>
-<div class = 'container signin_form'>
-  <%= form_with model: @user, local: true, class: 'signin_width form' do |f| %>
-    <h1 class = 'h3 mb-3 font-weight-normal text-center'><%= t '.title' %></h1>
-    <%= render 'shared/error_messages', model: @user %>
+<% breadcrumb :user_new %>
+<h1><%= t '.title' %></h1>
 
-    <%= f.label :user_name, class: 'badge badge-primary' %>
-    <%= f.text_field :user_name, class: 'form-control' %>
+<%= form_with model: @user, local: true do |f| %>
+  <%= render 'shared/error_messages', model: @user %>
+  <div class = 'field'>
+    <%= f.label :user_name %><br />
+    <%= f.text_field :user_name %>
+  </div>
+  <div class = 'field'>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class = 'field'>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class = 'field'>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class = 'actions'>
+    <%= f.submit t('defaults.register') %>
+  </div>
+<% end %>
 
-    <%= f.label :email, class: 'badge badge-primary' %>
-    <%= f.email_field :email, class: 'form-control' %>
-
-    <%= f.label :password, class: 'badge badge-primary' %>
-    <%= f.password_field :password, class: 'form-control' %>
-
-    <%= f.label :password_confirmation, class: 'badge badge-primary' %>
-    <%= f.password_field :password_confirmation, class: 'form-control' %><br>
-    
-    <%= f.submit t('defaults.register'), class: 'btn btn-lg btn-primary btn-block' %>
-  <% end %>
-</div>
+<%= link_to t('defaults.login'), login_path %>

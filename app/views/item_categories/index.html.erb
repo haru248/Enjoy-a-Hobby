@@ -1,14 +1,12 @@
 <% content_for(:title, t('.title')) %>
 <% breadcrumb :item_category_index, @preset %>
+<h1><%= t('.title') %></h1>
 
-<div class = 'container category_form category_width form'>
-  <h1 class = 'h3 mb-3 font-weight-normal text-center'><%= t('.title') %></h1>
-  <label class = 'badge badge-primary'><%= ItemCategory.human_attribute_name(:item_category_name) %></label>
+<p><%= ItemCategory.human_attribute_name(:item_category_name) %></p>
+<% if @item_categories.present? %>
+  <%= render partial: 'preset_category_form', collection: @item_categories, as: 'item_category', locals: { preset: @preset } %>
+<% end %>
 
-  <% if @item_categories.present? %>
-    <%= render partial: 'preset_category_form', collection: @item_categories, as: 'item_category', locals: { preset: @preset } %>
-  <% end %>
-  <%= render 'preset_category_form', { item_category: @item_category, preset: @preset } %>
+<%= render 'preset_category_form', { item_category: @item_category, preset: @preset } %>
 
-  <%= link_to t('presets.show.item_new'), new_preset_preset_item_path(@preset), class: 'btn btn-sm btn-primary' %>
-</div>
+<%= link_to t('presets.show.item_new'), new_preset_preset_item_path(@preset) %>

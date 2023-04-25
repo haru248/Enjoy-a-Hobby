@@ -1,77 +1,37 @@
 <% content_for(:title, @purchase_list.purchase_list_name) %>
 <% breadcrumb :purchase_list_show, @purchase_list %>
+<h1><%= t('.title') %></h1>
 
-<h1 class = 'display-5 text-center title_margin'><%= t('.title') %></h1>
-
-<div class = 'card card_margin bg-light mx-auto' style = 'width: 90%;'>
-  <div class = 'card-body'>
-    <h4 class = 'card-title text-center'><%= @purchase_list.purchase_list_name %></h4>
-    <div class = 'container'>
-      <div class = 'btn-group btn-group_margin'>
-      <%= link_to t('.purchase_new'), new_purchase_list_purchase_path(@purchase_list), class: 'btn btn-sm btn-outline-primary' %>
-      </div>
-      <div class = 'btn-group btn-group_margin'>
-        <%= link_to t('purchase_lists.edit.title'), edit_purchase_list_path(@purchase_list), class: 'btn btn-sm btn-outline-primary' %>
-        <%= link_to t('.list_destroy'), purchase_list_path(@purchase_list), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: @purchase_list.purchase_list_name)}, class: 'btn btn-sm btn-outline-danger' %>
-      </div>
+<%= @purchase_list.purchase_list_name %>
+<%= link_to t('purchase_lists.edit.title'), edit_purchase_list_path(@purchase_list) %>
+<%= link_to t('.list_destroy'), purchase_list_path(@purchase_list), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: @purchase_list.purchase_list_name)} %>
+<br>
+<br>
+<%= link_to t('.purchase_new'), new_purchase_list_purchase_path(@purchase_list) %>
+<br>
+<br>
+<% if @purchases.present? %>
+  <%= Purchase.human_attribute_name(:purchase_name) %>
+  <%= Purchase.human_attribute_name(:price) %>
+  <%= Purchase.human_attribute_name(:quantity) %>
+  <%= t('.amount') %>
+  <br>
+  <br>
+  <% @purchases.each do |purchase| %>
+    <div class = "purchase<%= purchase.id %>">
+      <%= purchase.purchase_name %>
+      <%= "#{purchase.price.to_s(:delimited)}#{t('defaults.yen')}" %>
+      <%= "#{purchase.quantity}#{t('defaults.quantity')}" %>
+      <%= "#{purchase.amount.to_s(:delimited)}#{t('defaults.yen')}" %>
+      <%= link_to t('defaults.edit'), edit_purchase_list_purchase_path(@purchase_list, purchase) %>
+      <%= link_to t('defaults.destroy'), purchase_list_purchase_path(@purchase_list, purchase), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: purchase.purchase_name)} %>
     </div>
-
-    <% if @purchases.present? %>
-      <table class = 'table'>
-        <thead class = 'thead-dark'>
-          <tr class = 'text-center'>
-            <th scope = 'col' class = 'col-4 themed-grid-col'>
-              <%= Purchase.human_attribute_name(:purchase_name) %>
-            </th>
-            <th scope = 'col' class = 'col-2 themed-grid-col'>
-              <%= Purchase.human_attribute_name(:price) %>
-            </th>
-            <th scope = 'col' class = 'col-2 themed-grid-col'>
-              <%= Purchase.human_attribute_name(:quantity) %>
-            </th>
-            <th scope = 'col' class = 'col-2 themed-grid-col'>
-              <%= t('.amount') %>
-            </th>
-            <th scope = 'col' class = 'col-2 themed-grid-col'></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @purchases.each do |purchase| %>
-            <tr class = "purchase<%= purchase.id %>">
-              <td class = 'col-4 themed-grid-col text-center'>
-                <%= purchase.purchase_name %>
-              </td>
-              <td class = 'col-2 themed-grid-col text-center'>
-                <%= "#{purchase.price.to_s(:delimited)}#{t('defaults.yen')}" %>
-              </td>
-              <td class = 'col-2 themed-grid-col text-center'>
-                <%= "#{purchase.quantity}#{t('defaults.quantity')}" %>
-              </td>
-              <td class = 'col-2 themed-grid-col text-center'>
-                <%= "#{purchase.amount.to_s(:delimited)}#{t('defaults.yen')}" %>
-              </td>
-              <td class = 'col-2 themed-grid-col text-center'>
-                <div class = 'btn-group'>
-                  <%= link_to t('defaults.edit'), edit_purchase_list_purchase_path(@purchase_list, purchase), class: 'btn btn-sm btn-outline-secondary' %>
-                  <%= link_to t('defaults.destroy'), purchase_list_purchase_path(@purchase_list, purchase), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: purchase.purchase_name)}, class: 'btn btn-sm btn-outline-secondary' %>
-                </div>
-              </td>
-            </tr>
-          <% end %>
-          <tr>
-            <td></td>
-            <td></td>
-            <th scope = 'col' class = 'col-2 themed-grid-col text-center'><%= t('.sum_amount') %></th>
-            <td class = 'col-2 themed-grid-col text-center'><%= sum_amount(@purchases) %></td>
-            <td></td>
-        </tbody>
-      </table>
-    <% else %>
-      <div class = 'text-center item_less_margin'>
-        <h3><%= t '.purchase_less' %></h3>
-        <p class = 'lead'><%= t '.purchase_less2' %></p>
-      </div>
-    <% end %>
-  </div>
-</div>
+  <% end %>
+  <br>
+  <%= t('.sum_amount') %>
+  <%= sum_amount(@purchases) %>
+  <br>
+  <br>
+<% else %>
+  <p><%= t '.purchase_less' %></p>
+<% end %>

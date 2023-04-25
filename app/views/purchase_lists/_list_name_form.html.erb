@@ -1,11 +1,10 @@
-<div class = 'container list_form'>
-  <%= form_with model: purchase_list, local: true, class: 'list_width form' do |f| %>
-    <h1 class = 'h3 mb-3 font-weight-normal text-center'><%= title %></h1>
-    <%= render 'shared/error_messages', model: purchase_list %>
-
-    <%= f.label :purchase_list_name, class: 'badge badge-primary' %>
-    <%= f.text_field :purchase_list_name, class: 'form-control' %><br>
-
-    <%= f.submit class: 'btn btn-lg btn-primary btn-block' %>
-  <% end %>
-</div>
+<%= form_with model: purchase_list, local: true do |f| %>
+  <%= render 'shared/error_messages', model: purchase_list %>
+  <div class = 'field'>
+    <%= f.label :purchase_list_name %><br />
+    <%= f.text_field :purchase_list_name %>
+  </div>
+  <div class = 'actions'>
+    <%= f.submit %>
+  </div>
+<% end %>

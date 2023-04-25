@@ -1,11 +1,14 @@
 <%= form_with model: [preset, item_category], local: true do |f| %>
-  <div class = "category<%= item_category.id %> d-flex justify-content-between align-items-center">
-    <%= f.text_field :item_category_name, class: 'form-control' %>
-    <div class = 'btn-group category_btn-group_margin'>
-      <%= f.submit class: 'btn btn-sm btn-outline-primary category_btn_width' %>
+  <div class = "category<%= item_category.id %>">
+    <div class = 'field'>
+      <%= f.text_field :item_category_name %>
+    </div>
+    <div class = 'actions'>
+      <%= f.submit %>
       <% if item_category.edit? %>
-        <%= link_to t('defaults.destroy'), preset_item_category_path(preset, item_category), method: :delete, data: {confirm: t('defaults.category_destroy_confirm', name: item_category.item_category_name)}, class: 'btn btn-sm btn-outline-danger category_btn_width' %>
+        <%= link_to t('defaults.destroy'), preset_item_category_path(preset, item_category), method: :delete, data: {confirm: t('defaults.category_destroy_confirm', name: item_category.item_category_name)} %>
       <% end %>
     </div>
+    <br>
   </div>
 <% end %>

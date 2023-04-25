@@ -1,90 +1,63 @@
 <% content_for(:title, t('.title')) %>
 <% breadcrumb :use_preset_show, @inventory_list, @preset %>
+<h1><%= t('.title') %></h1>
 
-<h1 class = 'display-5 text-center title_margin'><%= t('.title') %></h1>
-
-<div class = 'd-flex justify-content-around'>
-  <div class = 'card card_margin bg-light mx-auto' style = 'width: 40%;'>
-    <div class = 'card-body'>
-      <h5 class = 'card-subtitle mb-2 text-muted'><%= t '.confirm_preset' %></h5>
-      <h4 class = 'card-title text-center'><%= @preset.preset_name %></h4>
-      <div class = 'container'>
-        <%= link_to t('.edit_preset'), preset_path(@preset), class: 'btn btn-sm btn-primary btn_margin' %>
-        <% if @item_categories.present? %>
-          <%= link_to t('.use_preset'), inventory_list_use_preset_path(@inventory_list, @preset), method: :patch, data: {confirm: t('.use_preset_confirm', inventory_list_name: @inventory_list.inventory_list_name, preset_name: @preset.preset_name)}, class: 'btn btn-sm btn-primary btn_margin' %>
+<%= @preset.preset_name %>
+<br>
+<br>
+<%= link_to t('.edit_preset'), preset_path(@preset) %>
+<%= link_to t('.use_preset'), inventory_list_use_preset_path(@inventory_list, @preset),
+                              method: :patch,
+                              data: {confirm: t('.use_preset_confirm', inventory_list_name: @inventory_list.inventory_list_name, preset_name: @preset.preset_name)} %>
+<br>
+<br>
+<% if @item_categories.present? %>
+  <% @item_categories.each do |item_category| %>
+    <div class = "category<%= item_category.id %>">
+      <%= item_category.item_category_name %>
+      <br>
+      <br>
+      <% if item_category.preset_items.present? %>
+        <% item_category.preset_items.each do |preset_item| %>
+          <div class = "item<%= preset_item.id %>">
+            <%= preset_item.preset_item_name %>
+            <br>
+            <br>
+          </div>
         <% end %>
-      </div>
-
-      <% if @item_categories.present? %>
-        <ul class = 'list-group list-group-flush'>
-          <% @item_categories.each do |item_category| %>
-            <li class = 'list-group-item'>
-              <div class = "category<%= item_category.id %>">
-                <p class = 'p_margin_auto'><%= item_category.item_category_name %></p>
-                <% if item_category.preset_items.present? %>
-                  <ul class = 'list-group list-group-flush'>
-                    <% item_category.preset_items.each do |preset_item| %>
-                      <li class = 'list-group-item'>
-                        <div class = "item<%= preset_item.id %> d-flex justify-content-between align-items-center">
-                          <p class = 'p_margin_auto'><%= preset_item.preset_item_name %></p>
-                        </div>
-                      </li>
-                    <% end %>
-                  </ul>
-                <% else %>
-                  <div class = 'list-group-item text-center'>
-                    <p class = 'p_margin_auto'><%= t '.item_less' %></p>
-                  </div>
-                <% end %>
-              </div>
-            </li>
-          <% end %>
-        </ul>
       <% else %>
-        <div class = 'text-center item_less_margin'>
-          <h3><%= t '.category_less' %></h3>
-          <p class = 'lead'><%= t '.category_less2' %></p>
-        </div>
+        <p><%= t '.item_less' %></p>
       <% end %>
     </div>
-  </div>
+  <% end %>
+<% else %>
+  <p><%= t '.category_less' %></p>
+<% end %>
 
-  <i class="fa-solid fa-arrow-right fa-beat-fade arrow_margin"></i>
-
-  <div class = 'card card_margin bg-light mx-auto' style = 'width: 40%;'>
-    <div class = 'card-body'>
-      <h5 class = 'card-subtitle mb-2 text-muted'><%= t '.confirm_inventory_list' %></h5>
-      <h4 class = 'card-title text-center'><%= @inventory_list.inventory_list_name %></h4>
-      <% if @property_categories.present? %>
-        <ul class = 'list-group list-group-flush'>
-          <% @property_categories.each do |property_category| %>
-            <li class = 'list-group-item'>
-              <div class = "category<%= property_category.id %>">
-                <p class = 'p_margin_auto'><%= property_category.category_name %></p>
-                <% if property_category.properties.present? %>
-                  <ul class = 'list-group list-group-flush'>
-                    <% property_category.properties.each do |property| %>
-                      <li class = 'list-group-item'>
-                        <div class = "property<%= property.id %> d-flex justify-content-between align-items-center">
-                          <p class = 'p_margin_auto'><%= property.property_name %></p>
-                        </div>
-                      </li>
-                    <% end %>
-                  </ul>
-                <% else %>
-                  <div class = 'list-group-item text-center'>
-                    <p class = 'p_margin_auto'><%= t '.property_less' %></p>
-                  </div>
-                <% end %>
-              </div>
-            </li>
-          <% end %>
-        </ul>
+<br>
+<br>
+<%= @inventory_list.inventory_list_name %>
+<br>
+<br>
+<% if @property_categories.present? %>
+  <% @property_categories.each do |property_category| %>
+    <div class = "category<%= property_category.id %>">
+      <%= property_category.category_name %>
+      <br>
+      <br>
+      <% if property_category.properties.present? %>
+        <% property_category.properties.each do |property| %>
+          <div class = "property<%= property.id %>">
+            <%= property.property_name %>
+            <br>
+            <br>
+          </div>
+        <% end %>
       <% else %>
-        <div class = 'text-center item_less_margin'>
-          <h3><%= t '.category_less' %></h3>
-        </div>
+        <p><%= t '.property_less' %></p>
       <% end %>
     </div>
-  </div>
-</div>
+  <% end %>
+<% else %>
+  <p><%= t '.category_less' %></p>
+<% end %>

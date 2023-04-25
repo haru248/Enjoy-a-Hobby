@@ -1,23 +1,17 @@
-<div class = 'container item_form'>
-  <%= form_with model: [inventory_list, property], local: true, class: 'item_width form' do |f| %>
-    <h1 class = 'h3 mb-3 font-weight-normal text-center'><%= title %></h1>
-    <%= render 'shared/error_messages', model: property %>
-
-    <%= f.label PropertyCategory.human_attribute_name(:category_name), class: 'badge badge-primary' %><br>
-    <%= f.collection_select :property_category_id, inventory_list.property_categories, :id, :category_name, class: 'form-control' %><br>
-
-    <%= f.label :property_name, class: 'badge badge-primary' %><br>
-    <%= f.text_field :property_name, class: 'form-control' %><br>
-
+<%= form_with model: [inventory_list, property], local: true do |f| %>
+  <%= render 'shared/error_messages', model: property %>
+  <div class = 'field'>
+    <%= f.label PropertyCategory.human_attribute_name(:category_name) %><br />
+    <%= f.collection_select :property_category_id, inventory_list.property_categories, :id, :category_name %>
+  </div>
+  <div class = 'field'>
+    <%= f.label :property_name %><br />
+    <%= f.text_field :property_name %>
+  </div>
+  <div class = 'actions'>
+    <%= f.submit %>
     <% if property.edit? %>
-      <div class = 'btn-group btn-block'>
-        <%= f.submit class: 'btn btn-lg btn-outline-primary' %>
-        <%= link_to t('defaults.destroy'), inventory_list_property_path(inventory_list, property), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: property.property_name)}, class: 'btn btn-lg btn-outline-danger' %>
-      </div><br>
-    <% else %>
-      <%= f.submit class: 'btn btn-lg btn-primary btn-block' %>
-    <% end %><br>
-
-    <%= link_to t('inventory_lists.show.category_index'), inventory_list_property_categories_path(@inventory_list), class: 'btn btn-sm btn-primary' %>
-  <% end %>
-</div>
+      <%= link_to t('defaults.destroy'), inventory_list_property_path(inventory_list, property), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: property.property_name)} %>
+    <% end %>
+  </div>
+<% end %>

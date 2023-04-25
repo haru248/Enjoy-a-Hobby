@@ -1,29 +1,20 @@
 <% content_for(:title, t('.title')) %>
 <% breadcrumb :use_preset_index, @inventory_list %>
+<h1><%= t '.title' %></h1>
 
-<h1 class = 'display-5 text-center title_margin'><%= t '.title' %></h1>
 <%= render 'search', q: @q, url: inventory_list_use_presets_path(@inventory_list) %>
 
-<div class = 'py-4'>
-  <div class = 'container'>
-    <%= link_to t('presets.new.title'), new_preset_path, class: 'btn btn-sm btn-primary' %>
-    <% if @presets.present? %>
-      <ul class = 'list-group'>
-        <% @presets.each do |preset| %>
-          <li class = 'list-group-item bg-light'>
-            <div class = "preset<%= preset.id %> d-flex justify-content-between align-items-center">
-              <p class = 'p_margin_auto'><%= preset.preset_name %></p>
-              <%= link_to t('defaults.use'), inventory_list_use_preset_path(@inventory_list, preset), class: 'btn btn-sm btn-primary' %>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-      <%= paginate @presets %>
-    <% else %>
-      <div class = 'text-center item_less_margin'>
-        <h3><%= t '.preset_less' %></h3>
-        <p class = 'lead'><%= t '.preset_less2' %></p>
-      </div>  
-    <% end %>
-  </div>
-</div>
+<%= link_to t('presets.new.title'), new_preset_path %>
+<br>
+<br>
+
+<% if @presets.present? %>
+  <% @presets.each do |preset| %>
+    <%= preset.preset_name %>
+    <%= link_to t('defaults.use'), inventory_list_use_preset_path(@inventory_list, preset) %>
+    <br>
+  <% end %>
+  <%= paginate @presets %>
+<% else %>
+  <p><%= t '.preset_less' %></p>
+<% end %>

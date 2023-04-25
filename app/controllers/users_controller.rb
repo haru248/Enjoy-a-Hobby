@@ -11,13 +11,13 @@ class UsersController < ApplicationController
       begin
         ActiveRecord::Base.transaction do
           @user.create_default_preset
-          redirect_to login_path, success: t('.success')
+          redirect_to login_path, notice: t('.success')
         end
       rescue 
-        redirect_to login_path, success: t('.missing_create_default_preset')
+        redirect_to login_path, notice: t('.missing_create_default_preset')
       end
     else
-      flash.now[:danger] = t('.fail')
+      flash.now[:alert] = t('.fail')
       render :new
     end
   end
