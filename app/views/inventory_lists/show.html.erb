@@ -1,58 +1,39 @@
 <% content_for(:title, @inventory_list.inventory_list_name) %>
 <% breadcrumb :inventory_list_show, @inventory_list %>
+<h1><%= t('.title') %></h1>
 
-<h1 class = 'display-5 text-center title_margin'><%= t('.title') %></h1>
-
-<div class = 'card card_margin bg-light mx-auto' style = 'width: 80%;'>
-  <div class = 'card-body'>
-    <h4 class = 'card-title text-center'><%= @inventory_list.inventory_list_name %></h4>
-    <div class = 'container'>
-      <div class = 'btn-group btn-group_margin'>
-        <%= link_to t('.category_index'), inventory_list_property_categories_path(@inventory_list), class: 'btn btn-sm btn-outline-primary' %>
-        <%= link_to t('.property_new'), new_inventory_list_property_path(@inventory_list), class: 'btn btn-sm btn-outline-primary' %>
-        <%= link_to t('.use_preset'), inventory_list_use_presets_path(@inventory_list), class: 'btn btn-sm btn-outline-primary' %>
-      </div>
-      <div class = 'btn-group btn-group_margin'>
-        <%= link_to t('.use_list'), use_inventory_list_path(@inventory_list), data: {'turbolinks' => false}, class: 'btn btn-sm btn-outline-primary' %>
-        <%= link_to t('inventory_lists.edit.title'), edit_inventory_list_path(@inventory_list), class: 'btn btn-sm btn-outline-primary' %>
-        <%= link_to t('.list_destroy'), inventory_list_path(@inventory_list), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: @inventory_list.inventory_list_name)}, class: 'btn btn-sm btn-outline-danger' %>
-      </div>
-    </div>
-
-    <% if @property_categories.present? %>
-      <ul class = 'list-group list-group-flush'>
-        <% @property_categories.each do |property_category| %>
-          <li class = 'list-group-item'>
-            <div class = "category<%= property_category.id %>">
-              <p class = 'p_margin_auto'><%= property_category.category_name %></p>
-              <% if property_category.properties.present? %>
-                <ul class = 'list-group list-group-flush'>
-                  <% property_category.properties.each do |property| %>
-                    <li class = 'list-group-item'>
-                      <div class = "property<%= property.id %> d-flex justify-content-between align-items-center">
-                        <p class = 'p_margin_auto'><%= property.property_name %></p>
-                        <div class = 'btn-group'>
-                          <%= link_to t('defaults.edit'), edit_inventory_list_property_path(@inventory_list, property), class: 'btn btn-sm btn-outline-secondary' %>
-                          <%= link_to t('defaults.destroy'), inventory_list_property_path(@inventory_list, property), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: property.property_name)}, class: 'btn btn-sm btn-outline-secondary' %>
-                        </div>
-                      </div>
-                    </li>
-                  <% end %>
-                </ul>
-              <% else %>
-                <div class = 'list-group-item text-center'>
-                  <p class = 'p_margin_auto'><%= t '.property_less' %></p>
-                </div>
-              <% end %>
-            </div>
-          </li>
+<%= @inventory_list.inventory_list_name %>
+<%= link_to t('.use_list'), use_inventory_list_path(@inventory_list), data: {'turbolinks' => false} %>
+<%= link_to t('inventory_lists.edit.title'), edit_inventory_list_path(@inventory_list) %>
+<%= link_to t('.list_destroy'), inventory_list_path(@inventory_list), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: @inventory_list.inventory_list_name)} %>
+<br>
+<br>
+<%= link_to t('.category_index'), inventory_list_property_categories_path(@inventory_list) %>
+<%= link_to t('.property_new'), new_inventory_list_property_path(@inventory_list) %>
+<%= link_to t('.use_preset'), inventory_list_use_presets_path(@inventory_list) %>
+<br>
+<br>
+<% if @property_categories.present? %>
+  <% @property_categories.each do |property_category| %>
+    <div class = "category<%= property_category.id %>">
+      <%= property_category.category_name %>
+      <br>
+      <br>
+      <% if property_category.properties.present? %>
+        <% property_category.properties.each do |property| %>
+          <div class = "property<%= property.id %>">
+            <%= property.property_name %>
+            <%= link_to t('defaults.edit'), edit_inventory_list_property_path(@inventory_list, property) %>
+            <%= link_to t('defaults.destroy'), inventory_list_property_path(@inventory_list, property), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: property.property_name)} %>
+            <br>
+            <br>
+          </div>
         <% end %>
-      </ul>
-    <% else %>
-      <div class = 'text-center item_less_margin'>
-        <h3><%= t '.category_less' %></h3>
-        <p class = 'lead'><%= t '.category_less2' %></p>
-      </div>
-    <% end %>
-  </div>
-</div>
+      <% else %>
+        <p><%= t '.property_less' %></p>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p><%= t '.category_less' %></p>
+<% end %>

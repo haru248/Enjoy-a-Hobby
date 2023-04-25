@@ -1,14 +1,12 @@
 <% content_for(:title, t('.title')) %>
 <% breadcrumb :property_category_index, @inventory_list %>
+<h1><%= t('.title') %></h1>
 
-<div class = 'container category_form category_width form'>
-  <h1 class = 'h3 mb-3 font-weight-normal text-center'><%= t('.title') %></h1>
-  <label class = 'badge badge-primary'><%= PropertyCategory.human_attribute_name(:category_name) %></label>
+<p><%= PropertyCategory.human_attribute_name(:category_name) %></p>
+<% if @property_categories.present? %>
+  <%= render partial: 'property_category_form', collection: @property_categories, as: 'property_category', locals: { inventory_list: @inventory_list } %>
+<% end %>
 
-  <% if @property_categories.present? %>
-    <%= render partial: 'property_category_form', collection: @property_categories, as: 'property_category', locals: { inventory_list: @inventory_list } %>
-  <% end %>
-  <%= render 'property_category_form', { property_category: @property_category, inventory_list: @inventory_list } %>
+<%= render 'property_category_form', { property_category: @property_category, inventory_list: @inventory_list } %>
 
-  <%= link_to t('inventory_lists.show.property_new'), new_inventory_list_property_path(@inventory_list), class: 'btn btn-sm btn-primary' %>
-</div>
+<%= link_to t('inventory_lists.show.property_new'), new_inventory_list_property_path(@inventory_list) %>

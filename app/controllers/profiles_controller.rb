@@ -7,23 +7,23 @@ class ProfilesController < ApplicationController
   
   def update
     if @user.update(user_params)
-      redirect_to profile_path, success: t('.success')
+      redirect_to profile_path, notice: t('.success')
     else
-      flash.now[:danger] = t('.fail')
+      flash.now[:alert] = t('.fail')
       render :edit
     end
   end
 
   def destroy
     @user.destroy!
-    redirect_to root_path, success: t('.success')
+    redirect_to root_path, notice: t('.success')
   end
 
   def password_reset; end
 
   def create
     @user.deliver_reset_password_instructions! if @user
-    redirect_to mypage_path, success: t('.send_password_change_email')
+    redirect_to mypage_path, notice: t('.send_password_change_email')
   end
 
   private

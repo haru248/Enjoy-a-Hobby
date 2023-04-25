@@ -1,34 +1,3 @@
 <% content_for(:title, t('.title')) %>
 
-<div class = 'mypage_margin'>
-  <h3 class = 'display-5 text-center mypage_title_margin'><%= current_user.user_name %>さん</h3>
-  <h1 class = 'display-5 text-center mypage_title_margin'><%= t '.mypage_title' %></h1>
-  <div class = 'container'>
-    <table class = 'table table-bordered'>
-      <thead class = 'thead-dark'>
-        <tr class = 'text-center'>
-          <th scope = 'col'><%= t '.function' %></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody class = 'themed-grid-col'>
-        <tr class = 'text-center'>
-          <td><%= link_to t('defaults.preset'), presets_path %></td>
-          <td><%= t '.function1' %></td>
-        </tr>
-        <tr class = 'text-center'>
-          <td><%= link_to t('defaults.inventory_list'), inventory_lists_path %></td>
-          <td><%= t '.function2' %></td>
-        </tr>
-        <tr class = 'text-center'>
-          <td><%= link_to t('defaults.purchase_list'), purchase_lists_path %></td>
-          <td><%= t '.function3' %></td>
-        </tr>
-        <tr class = 'text-center'>
-          <td><%= link_to t('profiles.show.title'), profile_path %></td>
-          <td><%= t '.function4' %></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<h1><%= t('.title') %></h1>

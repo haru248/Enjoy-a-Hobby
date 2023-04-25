@@ -1,56 +1,37 @@
 <% content_for(:title, @preset.preset_name) %>
 <% breadcrumb :preset_show, @preset %>
+<h1><%= t('.title') %></h1>
 
-<h1 class = 'display-5 text-center title_margin'><%= t('.title') %></h1>
-
-<div class = 'card card_margin bg-light mx-auto' style = 'width: 80%;'>
-  <div class = 'card-body'>
-    <h4 class = 'card-title text-center'><%= @preset.preset_name %></h5>
-    <div class = 'container'>
-      <div class = 'btn-group btn-group_margin'>
-        <%= link_to t('.category_index'), preset_item_categories_path(@preset), class: 'btn btn-sm btn-outline-primary' %>
-        <%= link_to t('.item_new'), new_preset_preset_item_path(@preset), class: 'btn btn-sm btn-outline-primary' %>
-      </div>
-      <div class = 'btn-group btn-group_margin'>
-        <%= link_to t('presets.edit.title'), edit_preset_path(@preset), class: 'btn btn-sm btn-outline-primary' %>
-        <%= link_to t('.preset_destroy'), preset_path(@preset), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: @preset.preset_name)}, class: 'btn btn-sm btn-outline-danger' %>
-      </div>
-    </div>
-
-    <% if @item_categories.present? %>
-      <ul class = 'list-group list-group-flush'>
-        <% @item_categories.each do |item_category| %>
-          <li class = 'list-group-item'>
-            <div class = "category<%= item_category.id %>">
-              <p class = 'p_margin_auto'><%= item_category.item_category_name %></p>
-              <% if item_category.preset_items.present? %>
-                <ul class = 'list-group list-group-flush'>
-                  <% item_category.preset_items.each do |preset_item| %>
-                    <li class = 'list-group-item'>
-                      <div class = "item<%= preset_item.id %> d-flex justify-content-between align-items-center">
-                        <p class = 'p_margin_auto'><%= preset_item.preset_item_name %></p>
-                        <div class = 'btn-group'>
-                          <%= link_to t('defaults.edit'), edit_preset_preset_item_path(@preset, preset_item), class: 'btn btn-sm btn-outline-secondary' %>
-                          <%= link_to t('defaults.destroy'), preset_preset_item_path(@preset, preset_item), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: preset_item.preset_item_name)}, class: 'btn btn-sm btn-outline-secondary' %>
-                        </div>
-                      </div>
-                    </li>
-                  <% end %>
-                </ul>
-              <% else %>
-                <div class = 'list-group-item text-center'>
-                  <p class = 'p_margin_auto'><%= t '.item_less' %></p>
-                </div>
-              <% end %>
-            </div>
-          </li>
+<%= @preset.preset_name %>
+<%= link_to t('presets.edit.title'), edit_preset_path(@preset) %>
+<%= link_to t('.preset_destroy'), preset_path(@preset), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: @preset.preset_name)} %>
+<br>
+<br>
+<%= link_to t('.category_index'), preset_item_categories_path(@preset) %>
+<%= link_to t('.item_new'), new_preset_preset_item_path(@preset) %>
+<br>
+<br>
+<% if @item_categories.present? %>
+  <% @item_categories.each do |item_category| %>
+    <div class = "category<%= item_category.id %>">
+      <%= item_category.item_category_name %>
+      <br>
+      <br>
+      <% if item_category.preset_items.present? %>
+        <% item_category.preset_items.each do |preset_item| %>
+          <div class = "item<%= preset_item.id %>">
+            <%= preset_item.preset_item_name %>
+            <%= link_to t('defaults.edit'), edit_preset_preset_item_path(@preset, preset_item) %>
+            <%= link_to t('defaults.destroy'), preset_preset_item_path(@preset, preset_item), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: preset_item.preset_item_name)} %>
+            <br>
+            <br>
+          </div>
         <% end %>
-      </ul>
-    <% else %>
-      <div class = 'text-center item_less_margin'>
-        <h3><%= t '.category_less' %></h3>
-        <p class = 'lead'><%= t '.category_less2' %></p>
-      </div>
-    <% end %>
-  </div>
-</div>
+      <% else %>
+        <p><%= t '.item_less' %></p>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p><%= t '.category_less' %></p>
+<% end %>

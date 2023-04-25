@@ -14,7 +14,7 @@ RSpec.describe 'Profiles', type: :system do
           expect(current_path).to eq profile_path
           expect(page).to have_content 'test_user_update'
           expect(page).to have_content 'update_test@test'
-          expect(page).to have_content 'ユーザー情報を変更しました'
+          expect(page).to have_content 'プロフィールを変更しました'
         end
       end
       context 'ユーザーネームが未入力' do
@@ -24,7 +24,7 @@ RSpec.describe 'Profiles', type: :system do
           click_button '更新'
           expect(current_path).to eq profile_path
           expect(page).to have_content 'ユーザーネームを入力してください'
-          expect(page).to have_content 'ユーザー情報の編集に失敗しました'
+          expect(page).to have_content 'プロフィールの編集に失敗しました'
         end
       end
       context 'メールアドレスが未入力' do
@@ -34,7 +34,7 @@ RSpec.describe 'Profiles', type: :system do
           click_button '更新'
           expect(current_path).to eq profile_path
           expect(page).to have_content 'メールアドレスを入力してください'
-          expect(page).to have_content 'ユーザー情報の編集に失敗しました'
+          expect(page).to have_content 'プロフィールの編集に失敗しました'
         end
       end
     end

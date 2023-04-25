@@ -29,12 +29,12 @@ class UsePresetsController < ApplicationController
             end
           end
         end
-        redirect_to inventory_list_path(@inventory_list), success: t('.success', preset_name: @preset.preset_name)
+        redirect_to inventory_list_path(@inventory_list), notice: t('.success', preset_name: @preset.preset_name)
       rescue
-        redirect_to inventory_list_use_preset_path(@inventory_list, @preset), danger: t('.missing_use_preset')
+        redirect_to inventory_list_use_preset_path(@inventory_list, @preset), alert: t('.missing_use_preset')
       end
     else
-      redirect_to inventory_list_use_preset_path(@inventory_list, @preset), danger: t('.preset_category_less')
+      redirect_to inventory_list_use_preset_path(@inventory_list, @preset), alert: t('.preset_category_less')
     end
   end
 

@@ -1,11 +1,14 @@
 <%= form_with model: [inventory_list, property_category], local: true do |f| %>
-  <div class = "category<%= property_category.id %> d-flex justify-content-between align-items-center">
-    <%= f.text_field :category_name, class: 'form-control' %>
-    <div class = 'btn-group category_btn-group_margin'>
-      <%= f.submit class: 'btn btn-sm btn-outline-primary category_btn_width' %>
+  <div class = "category<%= property_category.id %>">
+    <div class = 'field'>
+      <%= f.text_field :category_name %>
+    </div>
+    <div class = 'actions'>
+      <%= f.submit %>
       <% if property_category.edit? %>
-        <%= link_to t('defaults.destroy'), inventory_list_property_category_path(inventory_list, property_category), method: :delete, data: {confirm: t('defaults.category_destroy_confirm', name: property_category.category_name)}, class: 'btn btn-sm btn-outline-danger category_btn_width' %>
+        <%= link_to t('defaults.destroy'), inventory_list_property_category_path(inventory_list, property_category), method: :delete, data: {confirm: t('defaults.category_destroy_confirm', name: property_category.category_name)} %>
       <% end %>
     </div>
+    <br>
   </div>
 <% end %>

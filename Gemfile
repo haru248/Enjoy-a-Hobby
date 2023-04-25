@@ -31,8 +31,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'annotate'
 # gem 'migration_comments'
 
-gem 'bootstrap', '~> 4.6.0'
-gem "font-awesome-sass", "~> 6.4.0"
+gem 'bootstrap-sass'
+gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'sassc'
 gem 'uglifier'

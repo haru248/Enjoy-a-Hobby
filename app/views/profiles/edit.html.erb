@@ -1,17 +1,18 @@
 <% content_for(:title, t('.title')) %>
 <% breadcrumb :profile_edit %>
+<h1><%= t '.title' %></h1>
 
-<div class = 'container profile_form'>
-  <%= form_with model: @user, url: profile_path, method: :put, local: true, class: 'profile_width form' do |f| %>
-    <h1 class = 'h3 mb-3 font-weight-normal text-center'><%= t '.title' %></h1>
-    <%= render 'shared/error_messages', model: @user %>
-
-    <%= f.label :user_name, class: 'badge badge-primary' %>
-    <%= f.text_field :user_name, class: 'form-control' %>
-
-    <%= f.label :email, class: 'badge badge-primary' %>
-    <%= f.text_field :email, class: 'form-control' %><br>
-
-    <%= f.submit class: 'btn btn-lg btn-primary btn-block' %>
-  <% end %>
-</div>
+<%= form_with model: @user, url: profile_path, method: :put, local: true do |f| %>
+  <%= render 'shared/error_messages', model: @user %>
+  <div class = 'field'>
+    <%= f.label :user_name %><br />
+    <%= f.text_field :user_name %>
+  </div>
+  <div class = 'field'>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class = 'actions'>
+    <%= f.submit %>
+  </div>
+<% end %>

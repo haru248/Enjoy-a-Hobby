@@ -13,9 +13,9 @@ class PresetsController < ApplicationController
   def create
     @preset = current_user.presets.new(preset_params)
     if @preset.save
-      redirect_to preset_path(@preset), success: t('.success', name: @preset.preset_name)
+      redirect_to preset_path(@preset), notice: t('.success', name: @preset.preset_name)
     else
-      flash.now[:danger] = t('.fail')
+      flash.now[:alert] = t('.fail')
       render :new
     end
   end
@@ -32,9 +32,9 @@ class PresetsController < ApplicationController
   def update
     @preset = current_user.presets.find(params[:id])
     if @preset.update(preset_params)
-      redirect_to preset_path(@preset), success: t('.success', name: @preset.preset_name)
+      redirect_to preset_path(@preset), notice: t('.success', name: @preset.preset_name)
     else
-      flash.now[:danger] = t('.fail')
+      flash.now[:alert] = t('.fail')
       render :edit
     end
   end
@@ -43,7 +43,7 @@ class PresetsController < ApplicationController
     @preset = current_user.presets.find(params[:id])
     name = @preset.preset_name
     @preset.destroy!
-    redirect_to presets_path, success: t('.success', name: name)
+    redirect_to presets_path, notice: t('.success', name: name)
   end
 
   private

@@ -53,19 +53,19 @@ RSpec.describe 'InventoryLists', type: :system do
         end
       end
       context 'ページネーション機能' do
-        context '持ち物リストが11件以上' do
+        context '持ち物リストが16件以上' do
           it 'ページネーションが表示され、正しく画面遷移する' do
             inventory_lists = create_list(:inventory_list, 20, user: user)
             visit inventory_lists_path
             expect(page).to have_css '.page-item'
-            expect(page).not_to have_content inventory_lists[10].inventory_list_name
+            expect(page).not_to have_content inventory_lists[15].inventory_list_name
             click_on '次 ›'
-            expect(page).to have_content inventory_lists[10].inventory_list_name
+            expect(page).to have_content inventory_lists[15].inventory_list_name
           end
         end
-        context '持ち物リストが10件以下' do
+        context '持ち物リストが15件以下' do
           it 'ページネーションが表示されない' do
-            inventory_lists = create_list(:inventory_list, 10, user: user)
+            inventory_lists = create_list(:inventory_list, 15, user: user)
             visit inventory_lists_path
             expect(page).not_to have_css '.page-item'
           end

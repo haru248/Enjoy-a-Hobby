@@ -13,9 +13,9 @@ class PurchaseListsController < ApplicationController
   def create
     @purchase_list = current_user.purchase_lists.new(list_params)
     if @purchase_list.save
-      redirect_to purchase_list_path(@purchase_list), success: t('.success', name: @purchase_list.purchase_list_name)
+      redirect_to purchase_list_path(@purchase_list), notice: t('.success', name: @purchase_list.purchase_list_name)
     else
-      flash.now[:danger] = t('.fail')
+      flash.now[alert] = t('.fail')
       render :new
     end
   end
@@ -32,9 +32,9 @@ class PurchaseListsController < ApplicationController
   def update
     @purchase_list = current_user.purchase_lists.find(params[:id])
     if @purchase_list.update(list_params)
-      redirect_to purchase_list_path(@purchase_list), success: t('.success', name: @purchase_list.purchase_list_name)
+      redirect_to purchase_list_path(@purchase_list), notice: t('.success', name: @purchase_list.purchase_list_name)
     else
-      flash.now[:danger] = t('.fail')
+      flash.now[alert] = t('.fail')
       render :edit
     end
   end
@@ -43,7 +43,7 @@ class PurchaseListsController < ApplicationController
     @purchase_list = current_user.purchase_lists.find(params[:id])
     name = @purchase_list.purchase_list_name
     @purchase_list.destroy!
-    redirect_to purchase_lists_path, success: t('.success', name: name)
+    redirect_to purchase_lists_path, notice: t('.success', name: name)
   end
 
   private
