@@ -1,1 +1,60 @@
-<h1>top page</h1>
+<div class = 'top_bg'>
+  <div class = 'top_page'>
+    <div class = 'cover-container d-flex w-100 h-100 p-3 mx-auto flex-column text-center'>
+      <div class = 'inner cover margin_top '>
+        <h1 class = 'cover-heading text-white'><%= t '.title' %></h1>
+        <p class = 'lead text-white margin_bottom_less'><%= t '.sub_title' %></p>
+      </div>
+    </div>
+  </div>
+  <div class = 'container marketing'>
+    <hr class = 'featurette-divider'>
+    <div class = 'row featurette'>
+      <div class = 'col-md-7'>
+        <h4 class = 'featurette-heading'>
+          <span class = 'text-muted'><%= t '.function_1' %></span>
+        </h4>
+        <h2 class = 'featurette-heading'><%= t '.function_name_1' %></h2>
+
+        <%= simple_format t('.function_explain_1'), class: 'lead' %>
+
+      </div>
+      <div class = 'col-md-5 top_image_margin'>
+        <%= image_tag 'inventory.jpg', class: 'rounded mx-auto d-block top_image' %>
+      </div>
+    </div>
+
+    <hr class = 'featurette-divider'>
+    <div class = 'row featurette'>
+      <div class = 'col-md-7 order-md-2'>
+        <h4 class = 'featurette-heading'>
+          <span class = 'text-muted'><%= t '.function_2' %></span>
+        </h4>
+        <h2 class = 'featurette-heading'><%= t '.function_name_2' %></h2>
+
+        <%= simple_format t('.function_explain_2'), class: 'lead' %>
+
+      </div>
+      <div class = 'col-md-5 order-md-1 top_image_margin'>
+        <%= image_tag 'checklist.jpg', class: 'rounded mx-auto d-block top_image' %>
+      </div>
+    </div>
+
+    <hr class = 'featurette-divider'>
+    <div class = 'row featurette'>
+      <div class = 'col-md-7'>
+        <h4 class = 'featurette-heading'>
+          <span class = 'text-muted'><%= t '.function_3' %></span>
+        </h4>
+        <h2 class = 'featurette-heading'><%= t '.function_name_3' %></h2>
+
+        <%= simple_format t('.function_explain_3'), class: 'lead' %>
+
+      </div>
+      <div class = 'col-md-5 top_image_margin'>
+        <%= image_tag 'buy.jpg', class: 'rounded mx-auto d-block top_image' %>
+      </div>
+    </div>
+
+  </div>
+</div>

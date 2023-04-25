@@ -53,19 +53,19 @@ RSpec.describe 'PurchaseLists', type: :system do
         end
       end
       context 'ページネーション機能' do
-        context '物販購入リストが16件以上' do
+        context '物販購入リストが11件以上' do
           it 'ページネーションが表示され、正しく画面遷移する' do
             purchase_lists = create_list(:purchase_list, 20, user: user)
             visit purchase_lists_path
             expect(page).to have_css '.page-item'
-            expect(page).not_to have_content purchase_lists[15].purchase_list_name
+            expect(page).not_to have_content purchase_lists[10].purchase_list_name
             click_on '次 ›'
-            expect(page).to have_content purchase_lists[15].purchase_list_name
+            expect(page).to have_content purchase_lists[10].purchase_list_name
           end
         end
-        context '物販購入リストが15件以下' do
+        context '物販購入リストが10件以下' do
           it 'ページネーションが表示されない' do
-            purchase_lists = create_list(:purchase_list, 15, user: user)
+            purchase_lists = create_list(:purchase_list, 10, user: user)
             visit purchase_lists_path
             expect(page).not_to have_css '.page-item'
           end

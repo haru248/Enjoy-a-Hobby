@@ -1,40 +1,54 @@
 <% content_for(:title, @inventory_list.inventory_list_name + t('defaults.use')) %>
 <% breadcrumb :inventory_list_use, @inventory_list %>
-<h1><%= t('.title') %></h1>
-
 <%= javascript_pack_tag 'inventory_list_use' %>
 
-<%= form_with do |f| %>
-  <%= f.label :checked_hide, t('.not_checked_hide'), value: false, name: 'not_hide_rbtn' %>
-  <%= f.radio_button :checked_hide, 'false', { checked: true } %>
-  <br>
-  <%= f.label :checked_hide, t('.checked_hide'), value: true, name: 'hide_rbtn' %>
-  <%= f.radio_button :checked_hide, 'true' %>
-<% end %>
-<br>
+<h1 class = 'display-5 text-center title_margin'><%= t('.title') %></h1>
 
-<%= @inventory_list.inventory_list_name %>
-<br>
-<br>
-<% if @property_categories.present? %>
-  <% @property_categories.each do |property_category| %>
-    <div class = "category<%= property_category.id %>">
-      <%= label_tag 'property_category[category_name]', property_category.category_name %>
-      <% if property_category.properties.present? %>
-        <% property_category.properties.each do |property| %>
-          <div class = "property property<%= property.id %>">
-            <%= label_tag 'property[property_name]' do %>
-              <%= check_box_tag :check, "property#{property.id}" %>
-              <%= property.property_name %>
-            <% end %>
-            <br>
-          </div>
-        <% end %>
-      <% else %>
-        <p><%= t '.property_less' %></p>
+<div class = 'card card_margin bg-light mx-auto' style = 'width: 80%;'>
+  <div class = 'card-body'>
+    <h4 class = 'card-title text-center'><%= @inventory_list.inventory_list_name %></h4>
+    <div class = 'container text-center'>
+      <%= form_with class: 'form-group' do |f| %>
+        <div class = 'form-check form-check-inline'>
+          <%= f.radio_button :checked_hide, 'false', { checked: true, class: 'form-check-input' } %>
+          <%= f.label :checked_hide, t('.not_checked_hide'), value: false, name: 'not_hide_rbtn', class: 'form-check-label' %>
+        </div>
+        <div class = 'form-check form-check-inline'>
+          <%= f.radio_button :checked_hide, 'true', class: 'form-check-input' %>
+          <%= f.label :checked_hide, t('.checked_hide'), value: true, name: 'hide_rbtn', class: 'form-check-label' %>
+        </div>
       <% end %>
     </div>
-  <% end %>
-<% else %>
-  <p><%= t '.category_less' %></p>
-<% end %>
+
+    <% if @property_categories.present? %>
+      <ul class = 'list-group list-group-flush'>
+        <% @property_categories.each do |property_category| %>
+          <li class = 'list-group-item'>
+            <div class = "category<%= property_category.id %>">
+              <%= label_tag 'property_category[category_name]', property_category.category_name %>
+              <% if property_category.properties.present? %>
+                <% property_category.properties.each do |property| %>
+                  <div class = "property property<%= property.id %>">
+                    <div class = 'form-check d-flex justify-content-between align-items-center'>
+                      <%= label_tag 'property[property_name]', class: 'form-check-label' do %>
+                        <%= check_box_tag :check, "property#{property.id}" %>
+                        <%= property.property_name %>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              <% else %>
+                <p class = 'p_margin_auto'><%= t '.property_less' %></p>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <div class = 'text-center item_less_margin'>
+        <h3><%= t '.category_less' %></h3>
+        <p class = 'lead'><%= t '.category_less2' %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

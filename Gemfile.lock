@@ -81,9 +81,10 @@ GEM
       debug_inspector (>= 0.0.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
+    bootstrap (4.6.2)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 1.16.1, < 2)
+      sassc-rails (>= 2.0.0)
     bootstrap4-kaminari-views (1.0.1)
       kaminari (>= 0.13)
       rails (>= 3.1)
@@ -171,8 +172,8 @@ GEM
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
     ffi (1.15.5)
-    font-awesome-rails (4.7.0.8)
-      railties (>= 3.2, < 8.0)
+    font-awesome-sass (6.4.0)
+      sassc (~> 2.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     gretel (4.4.0)
@@ -260,6 +261,7 @@ GEM
     parallel (1.22.1)
     parser (3.2.1.0)
       ast (~> 2.4.1)
+    popper_js (1.16.1)
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -447,7 +449,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap (>= 1.4.4)
-  bootstrap-sass
+  bootstrap (~> 4.6.0)
   bootstrap4-kaminari-views
   brakeman
   bullet
@@ -460,7 +462,7 @@ DEPENDENCIES
   enum_help
   factory_bot_rails
   faker
-  font-awesome-rails
+  font-awesome-sass (~> 6.4.0)
   gretel
   jbuilder (~> 2.7)
   jquery-rails

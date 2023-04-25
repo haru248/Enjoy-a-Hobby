@@ -10,18 +10,18 @@ class PropertyCategoriesController < ApplicationController
   def create
     @property_category = @inventory_list.property_categories.new(category_params)
     if @property_category.save
-      redirect_to inventory_list_property_categories_path(@inventory_list), notice: t('.success', name: @property_category.category_name)
+      redirect_to inventory_list_property_categories_path(@inventory_list), success: t('.success', name: @property_category.category_name)
     else
-      redirect_to inventory_list_property_categories_path(@inventory_list), alert: t('.fail')
+      redirect_to inventory_list_property_categories_path(@inventory_list), danger: t('.fail')
     end
   end
 
   def update
     @property_category = @inventory_list.property_categories.find(params[:id])
     if @property_category.update(category_params)
-      redirect_to inventory_list_property_categories_path(@inventory_list), notice: t('.success', name: @property_category.category_name)
+      redirect_to inventory_list_property_categories_path(@inventory_list), success: t('.success', name: @property_category.category_name)
     else
-      redirect_to inventory_list_property_categories_path(@inventory_list), alert: t('.fail', name:  PropertyCategory.find(@property_category.id).category_name)
+      redirect_to inventory_list_property_categories_path(@inventory_list), danger: t('.fail', name:  PropertyCategory.find(@property_category.id).category_name)
     end
   end
 
@@ -29,7 +29,7 @@ class PropertyCategoriesController < ApplicationController
     @property_category = @inventory_list.property_categories.find(params[:id])
     name = @property_category.category_name
     @property_category.destroy!
-    redirect_to inventory_list_property_categories_path(@inventory_list), notice: t('.success', name: name)
+    redirect_to inventory_list_property_categories_path(@inventory_list), success: t('.success', name: name)
   end
 
   private

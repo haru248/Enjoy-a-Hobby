@@ -1,4 +1,8 @@
-<%= search_form_for @q, url: url do |f| %>
-  <%= f.search_field :preset_name_cont, class: 'form-control', placeholder: true %>
-  <%= f.submit t('defaults.search'), class: 'btn btn-primary' %>
-<% end %>
+<div class = 'container'>
+  <%= search_form_for @q, url: url do |f| %>
+    <div class = 'd-flex justify-content-between align-items-center'>
+      <%= f.search_field :preset_name_cont, class: 'form-control', placeholder: true %>
+      <%= f.submit t('defaults.search'), class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
