@@ -30,6 +30,27 @@ ja:
         preset_name_cont: '検索ワード'
         inventory_list_name_cont: '検索ワード'
         purchase_list_name_cont: '検索ワード'
+  static_pages:
+    top:
+      title: 'LIVE Pl@nning'
+      sub_title: 'ライブ特化型持ち物チェックリストアプリ'
+      function_1: '機能1'
+      function_name_1: '持ち物リスト'
+      function_explain_1: |
+        ライブ前の持ち物の準備をサポート！
+        カテゴリーごとに持ち物を追加し自分用の持ち物リストを作成しよう。
+        作成した持ち物リストはチェックリスト方式で使用可能！
+      function_2: '機能2'
+      function_name_2: 'プリセット'
+      function_explain_2: |
+        持ち物リストの作成をサポート！
+        デフォルトで用意されているプリセットや、自作のプリセットを作成して持ち物リストに適用しよう。
+      function_3: '機能3'
+      function_name_3: '物販購入リスト'
+      function_explain_3: |
+        ライブの物販をサポート！
+        グッズ名、値段、個数を登録出来るリストを作成可能。
+        物販で買うものを忘れないようにリストを作成しよう！
   users:
     new:
       title: 'ユーザー登録'
@@ -50,6 +71,8 @@ ja:
   password_resets:
     new:
       title: 'パスワードを忘れた方'
+      explanation: 'ユーザー登録時に登録したメールアドレスに、パスワード変更用のメールを送信します。'
+      explanation2: '登録したメールアドレスを入力し送信ボタンを押してください。'
       user_email: '登録したメールアドレス'
     create:
       send_password_change_email: 'パスワード変更用メールを送信しました'
@@ -60,10 +83,17 @@ ja:
   mypages:
     index:
       title: 'マイページ'
+      mypage_title: 'LIVE Pl@nnigへようこそ'
+      function: '機能解説'
+      function1: '持ち物リスト作成時に使用できるプリセットの作成・管理が行えます'
+      function2: 'チェックリスト方式で使用可能な持ち物リストの作成・管理が行えます'
+      function3: 'グッズ名、値段、個数で登録できる購入リストの作成・管理が行えます'
+      function4: 'ユーザーネーム、メールアドレス、パスワードの変更が行えます'
   presets:
     index:
       title: 'プリセット一覧'
       preset_less: 'プリセットがありません'
+      preset_less2: 'プリセットを作成して持ち物リストの作成に役立てましょう!'
     new:
       title: 'プリセット作成'
     create:
@@ -75,6 +105,7 @@ ja:
       category_index: 'カテゴリーの追加・編集・削除'
       item_new: '持ち物の追加'
       category_less: '登録されたカテゴリーがありません'
+      category_less2: 'カテゴリーを作成して持ち物を登録しましょう!'
       item_less: 'このカテゴリーに登録された持ち物はありません'
     edit:
       title: 'プリセット名編集'
@@ -112,6 +143,7 @@ ja:
     index:
       title: '持ち物リスト一覧'
       list_less: '持ち物リストがありません'
+      list_less2: '持ち物リスト作成からリストを作って活用しましょう!'
     new:
       title: '持ち物リスト作成'
     create:
@@ -125,6 +157,7 @@ ja:
       property_new: '持ち物の追加'
       use_preset: 'プリセット使用'
       category_less: '登録されたカテゴリーがありません'
+      category_less2: 'カテゴリーを作成して持ち物を登録しましょう!'
       property_less: 'このカテゴリーに登録された持ち物はありません'
     edit:
       title: '持ち物リスト名編集'
@@ -138,6 +171,7 @@ ja:
       checked_hide: 'チェックした持ち物を隠す'
       not_checked_hide: 'チェックした持ち物を隠さない'
       category_less: '登録されたカテゴリーがありません'
+      category_less2: 'カテゴリーと持ち物を登録して持ち物リストを作成しましょう!'
       property_less: 'このカテゴリーに登録された持ち物はありません'
   property_categories:
     index:
@@ -168,12 +202,16 @@ ja:
     index:
       title: 'プリセット使用一覧'
       preset_less: 'プリセットがありません'
+      preset_less2: 'プリセットを作成して持ち物リストの作成に役立てましょう!'
     show:
       title: 'プリセットの内容確認'
+      confirm_preset: '使用するプリセット'
+      confirm_inventory_list: '使用先の持ち物リスト'
       edit_preset: 'プリセットの編集へ'
       use_preset: 'このプリセットを使用する'
       use_preset_confirm: "%{inventory_list_name}に%{preset_name}を適用してよろしいですか?"
       category_less: '登録されたカテゴリーがありません'
+      category_less2: 'このプリセットは使用できません。'
       item_less: 'このカテゴリーに登録された持ち物はありません'
       property_less: 'このカテゴリーに登録された持ち物はありません'
     update:
@@ -184,6 +222,7 @@ ja:
     index:
       title: '物販購入リスト一覧'
       list_less: '物販購入リストがありません'
+      list_less2: '物販購入リスト作成からリストを作って活用しましょう!'
     new:
       title: '物販購入リスト作成'
     create:
@@ -196,6 +235,7 @@ ja:
       amount: '金額'
       sum_amount: '合計金額'
       purchase_less: '購入品が登録されていません'
+      purchase_less2: '購入品の追加から購入予定のグッズを追加して購入リストを作成しましょう!'
     edit:
       title: '物販購入リスト名編集'
     update:
@@ -218,21 +258,20 @@ ja:
       success: "%{name}を削除しました"
   profiles:
     show:
-      title: 'プロフィール'
+      title: 'ユーザー情報'
       user_destroy: 'アカウント削除'
       user_destroy_confirm: 'アカウント削除後、アカウントの復旧はできません。本当に削除してもよろしいですか?'
     edit:
-      title: 'プロフィール編集'
+      title: 'ユーザー情報編集'
       password_reset: 'パスワード変更'
     update:
-      success: 'プロフィールを変更しました'
-      fail: 'プロフィールの編集に失敗しました'
+      success: 'ユーザー情報を変更しました'
+      fail: 'ユーザー情報の編集に失敗しました'
     destroy:
       success: 'アカウントを削除しました'
     password_reset:
       title: 'パスワード変更用メール送信'
-      explanatory: '登録されているメールアドレスにパスワード変更用の
-メールを送信します。
+      explanatory: '登録されているメールアドレスに、パスワード変更用のメールを送信します。
 メールアドレスに問題がなければ送信ボタンを押してください。'
     create:
       send_password_change_email: 'パスワード変更用メールを送信しました'

@@ -7,15 +7,15 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_back_or_to mypage_path, notice: t('.success')
+      redirect_back_or_to mypage_path, success: t('.success')
     else
-      flash.now[:alert] = t('.fail')
+      flash.now[:danger] = t('.fail')
       render :new
     end
   end
 
   def destroy
     logout
-    redirect_to login_path, notice: t('.success')
+    redirect_to login_path, success: t('.success')
   end
 end

@@ -62,10 +62,7 @@ RSpec.describe 'UsePresets', type: :system do
       context '使用するプリセットにカテゴリーが登録されていない' do
         it 'エラーメッセージと共にプリセット内容確認ページにリダイレクトする' do
           visit inventory_list_use_preset_path(inventory_list, preset)
-          click_on 'このプリセットを使用する'
-          expect(page.accept_confirm).to eq "#{inventory_list.inventory_list_name}に#{preset.preset_name}を適用してよろしいですか?"
-          expect(current_path).to eq inventory_list_use_preset_path(inventory_list, preset)
-          expect(page).to have_content '使用しようとしたプリセットにカテゴリーが登録されていません'
+          expect(page).not_to have_content 'このプリセットを使用する'
         end
       end
     end
@@ -98,19 +95,19 @@ RSpec.describe 'UsePresets', type: :system do
         end
       end
       context 'ページネーション機能' do
-        context 'プリセットが16件以上' do
+        context 'プリセットが11件以上' do
           it 'ページネーションが表示され、正しく画面遷移する' do
             presets = create_list(:preset, 20, user: user)
             visit inventory_list_use_presets_path(inventory_list)
             expect(page).to have_css '.page-item'
-            expect(page).not_to have_content presets[15].preset_name
+            expect(page).not_to have_content presets[10].preset_name
             click_on '次 ›'
-            expect(page).to have_content presets[15].preset_name
+            expect(page).to have_content presets[10].preset_name
           end
         end
-        context 'プリセットが15件以下' do
+        context 'プリセットが10件以下' do
           it 'ページネーションが表示されない' do
-            presets = create_list(:preset, 14, user: user)
+            presets = create_list(:preset, 9, user: user)
             visit inventory_list_use_presets_path(inventory_list)
             expect(page).not_to have_css '.page-item'
           end
