@@ -1,5 +1,20 @@
-<footer>
-  <%= link_to t('supports.terms_of_servise.title'), '#' %>
-  <%= link_to t('supports.privacy_policy.title'), '#' %>
-  <%= link_to t('supports.inquiry.title'), '#' %>
+<footer class = 'footer mt-auto py-3 bg-light'>
+  <div class = 'container'>
+  <ul class = 'nav justify-content-center border-bottom pb-3 mb-3'>
+    <li class = 'nav-item'>
+      <%= link_to t('supports.terms_of_servise.title'), '#', class: 'nav-link disabled' %>
+    </li>
+    <li class = 'nav-item'>
+      <%= link_to t('supports.privacy_policy.title'), '#', class: 'nav-link disabled' %>
+    </li>
+    <li class = 'nav-item'>
+      <%= link_to t('supports.inquiry.title'), '#', class: 'nav-link disabled' %>
+    </li>
+  </ul>
+  <p class = 'text-center text-muted'>
+    <font style = 'vertical-align: inherit;'>
+      Live Pl@nning
+    </font>
+  </p>
+  </div>
 </footer>

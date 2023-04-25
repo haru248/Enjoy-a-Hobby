@@ -1,21 +1,24 @@
-<%= form_with model: [purchase_list, purchase], local: true do |f| %>
-  <%= render 'shared/error_messages', model: purchase %>
-  <div class = 'field'>
-    <%= f.label :purchase_name %><br />
-    <%= f.text_field :purchase_name %>
-  </div>
-  <div class = 'field'>
-    <%= f.label :price %><br />
-    <%= f.number_field :price, min: 0 %>
-  </div>
-  <div class = 'field'>
-    <%= f.label :quantity %><br />
-    <%= f.number_field :quantity, min: 1 %>
-  </div>
-  <div class = 'actions'>
-    <%= f.submit %>
+<div class = 'container item_form'>
+  <%= form_with model: [purchase_list, purchase], local: true, class: 'item_width form' do |f| %>
+    <h1 class = 'h3 mb-3 font-weight-normal text-center'><%= title %></h1>
+    <%= render 'shared/error_messages', model: purchase %>
+
+    <%= f.label :purchase_name, class: 'badge badge-primary' %><br>
+    <%= f.text_field :purchase_name, class: 'form-control' %>
+
+    <%= f.label :price, class: 'badge badge-primary' %><br>
+    <%= f.number_field :price, min: 0, class: 'form-control' %>
+
+    <%= f.label :quantity, class: 'badge badge-primary' %><br>
+    <%= f.number_field :quantity, min: 1, class: 'form-control' %><br>
+
     <% if purchase.edit? %>
-      <%= link_to t('defaults.destroy'), purchase_list_purchase_path(purchase_list, purchase), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: purchase.purchase_name)} %>
+      <div class = 'btn-group btn-block'>
+        <%= f.submit class: 'btn btn-lg btn-outline-primary' %>
+        <%= link_to t('defaults.destroy'), purchase_list_purchase_path(purchase_list, purchase), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: purchase.purchase_name)}, class: 'btn btn-lg btn-outline-danger' %>
+      </div>
+    <% else %>
+      <%= f.submit class: 'btn btn-lg btn-primary btn-block' %>
     <% end %>
-  </div>
-<% end %>
+  <% end %>
+</div>

@@ -11,5 +11,140 @@
  * It is generally better to create a new file per style scope.
  *
  */
- @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "font-awesome";
+
+.form {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #dee2e6;
+  background-color: #f8f9fa;
+}
+.login_form {
+  margin-top: -70px;
+  padding-top: 180px;
+}
+.signin_form {
+  margin-top: -70px;
+  padding-top: 130px;
+  margin-bottom: 50px;
+}
+.password_reset_form {
+  padding-top: 70px;
+}
+.list_form {
+  margin-top: 90px;
+  margin-bottom: 50px;
+}
+.category_form {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.item_form {
+  margin-top: 70px;
+  margin-bottom: 50px;
+}
+.profile_form {
+  margin-top: 90px;
+  margin-bottom: 50px;
+}
+.profile_page_margin {
+  margin-top: 80px;
+  margin-bottom: 50px;
+}
+.signin_width {
+  max-width: 430px;
+}
+.password_reset_width {
+  max-width: 500px;
+}
+.list_width {
+  max-width: 430px;
+}
+.category_width {
+  max-width: 500px;
+}
+.category_btn-group_margin {
+  width: auto;
+  margin: 10px 0 10px 10px;
+}
+.category_btn_width {
+  width: 50px;
+}
+.item_width {
+  max-width: 500px;
+}
+.profile_width {
+  max-width: 430px;
+}
+.title_margin {
+  margin-top: 1rem;
+}
+.item_less_margin {
+  margin: 30px 0;
+}
+.p_margin_auto {
+  margin: auto 0;
+}
+.card_margin {
+  margin: 30px auto;
+}
+.btn-group_margin {
+  margin: 10px 0;
+}
+.btn_margin {
+  margin-bottom: 10px;
+}
+.arrow_margin {
+  margin: auto 0;
+}
+.paginate {
+  width: 100%;
+  margin-top: 10px;
+}
+.breadcrumb {
+  margin-bottom: 0;
+}
+.themed-grid-col {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: rgba(86, 61, 124, .15);
+  border: 1px solid rgba(86, 61, 124, .2);
+}
+.top_bg {
+  background-color: #3b82f680;
+}
+.top_page {
+  background-image: image-url('live_image.jpg');
+  height: 544px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+.margin_top {
+  padding: 2% 5%;
+  margin: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+.top_image {
+  width: 270px;
+  height: 180px;
+}
+.margin_bottom_less {
+  margin-bottom: 0;
+}
+.top_image_margin {
+  margin: auto 0;
+}
+.mypage_margin {
+  margin: 70px 0;
+}
+.mypage_title_margin {
+  margin: 1rem 0;
+}
+.fm_margin_bottom {
+  margin-bottom: 0;
+}

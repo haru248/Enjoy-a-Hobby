@@ -1,20 +1,41 @@
-<header class="sticky-top">
-  <h1><%= link_to t('defaults.app_name'), root_path %></h1>
-  <div align = 'right'>
-  <% if logged_in? %>
-    <li>
-      <%= link_to t('profiles.show.title'), profile_path %>
-    </li>
-    <li>
-      <%= link_to t('defaults.logout'), logout_path, method: :delete %>
-     </li>
-  <% else %>
-    <li>
-       <%= link_to t('defaults.singin'), new_user_path %>
-    </li>
-    <li>
-       <%= link_to t('defaults.login'), login_path %>
-     </li>
-  <% end %>
-  </div>
+<header class = 'd-flex flex-wrap justify-content-center py-3 mb-4 border-bottom'>
+  <nav class = 'navbar navbar-expand-md navbar-dark fixed-top bg-info'>
+    <%= link_to root_path, class: 'navbar-brand' do %>
+      <%= t 'defaults.app_name' %>
+    <% end %>
+    <button class = 'navbar-toggler' type = 'button' data-toggle = 'collapse' data-target = '#navbarheader' aria-controls = 'navbarheader' aria-expanded = 'false' aria-label = 'Toggle navigation'>
+      <span class = 'navbar-toggler-icon'></span>
+    </button>
+    <div class = 'collapse navbar-collapse' id = 'navbarheader'>
+      <ul class = 'navbar-nav mr-auto"'>
+        <% if logged_in? %>
+          <li class = 'nav-item active'>
+            <%= link_to t('defaults.preset'), presets_path, class: 'nav-link' %>
+          </li>
+          <li class = 'nav-item active'>
+            <%= link_to t('defaults.inventory_list'), inventory_lists_path, class: 'nav-link' %>
+          </li>
+          <li class = 'nav-item active'>
+            <%= link_to t('defaults.purchase_list'), purchase_lists_path, class: 'nav-link' %>
+          </li>
+          <li class = 'nav-item'>
+            <%= link_to t('defaults.schedule'), '#', class: 'nav-link disabled' %>
+          </li>
+          <li class = 'nav-item active'>
+            <%= link_to t('profiles.show.title'), profile_path, class: 'nav-link' %>
+          </li>
+          <li class = 'nav-item'>
+            <%= link_to t('defaults.logout'), logout_path, method: :delete, class: 'nav-link' %>
+          </li>
+        <% else %>
+          <li class = 'nav-item active'>
+            <%= link_to t('defaults.singin'), new_user_path, class: 'nav-link' %>
+          </li>
+          <li class = 'nav-item active'>
+            <%= link_to t('defaults.login'), login_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
 </header>

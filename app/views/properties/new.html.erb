@@ -1,7 +1,4 @@
 <% content_for(:title, t('.title')) %>
 <% breadcrumb :property_new, @inventory_list %>
-<h1><%= t '.title' %></h1>
 
-<%= render 'property_form', { inventory_list: @inventory_list, property: @property } %>
-
-<%= link_to t('inventory_lists.show.category_index'), inventory_list_property_categories_path(@inventory_list) %>
+<%= render 'property_form', { inventory_list: @inventory_list, property: @property, title: t('.title') } %>

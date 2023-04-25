@@ -13,9 +13,9 @@ class InventoryListsController < ApplicationController
   def create
     @inventory_list = current_user.inventory_lists.new(list_params)
     if @inventory_list.save
-      redirect_to inventory_list_path(@inventory_list), notice: t('.success', name: @inventory_list.inventory_list_name)
+      redirect_to inventory_list_path(@inventory_list), success: t('.success', name: @inventory_list.inventory_list_name)
     else
-      flash.now[:alert] = t('.fail')
+      flash.now[:danger] = t('.fail')
       render :new
     end
   end
@@ -32,9 +32,9 @@ class InventoryListsController < ApplicationController
   def update
     @inventory_list = current_user.inventory_lists.find(params[:id])
     if @inventory_list.update(list_params)
-      redirect_to inventory_list_path(@inventory_list), notice: t('.success', name: @inventory_list.inventory_list_name)
+      redirect_to inventory_list_path(@inventory_list), success: t('.success', name: @inventory_list.inventory_list_name)
     else
-      flash.now[:alert] = t('.fail')
+      flash.now[:danger] = t('.fail')
       render :edit
     end
   end
@@ -43,7 +43,7 @@ class InventoryListsController < ApplicationController
     @inventory_list = current_user.inventory_lists.find(params[:id])
     name = @inventory_list.inventory_list_name
     @inventory_list.destroy!
-    redirect_to inventory_lists_path, notice: t('.success', name: name)
+    redirect_to inventory_lists_path, success: t('.success', name: name)
   end
 
   def use

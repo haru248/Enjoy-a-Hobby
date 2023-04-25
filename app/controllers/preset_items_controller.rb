@@ -3,16 +3,16 @@ class PresetItemsController < ApplicationController
   before_action :set_preset
 
   def new
-    redirect_to preset_item_categories_path(@preset), alert: t('.category_less_alert') unless @preset.item_categories.present?
+    redirect_to preset_item_categories_path(@preset), danger: t('.category_less_alert') unless @preset.item_categories.present?
     @preset_item = PresetItem.new
   end
 
   def create
     @preset_item = PresetItem.new(item_params)
     if @preset_item.save
-      redirect_to preset_path(@preset), notice: t('.success', item_name: @preset_item.preset_item_name, category_name: @preset_item.item_category.item_category_name)
+      redirect_to preset_path(@preset), success: t('.success', item_name: @preset_item.preset_item_name, category_name: @preset_item.item_category.item_category_name)
     else
-      flash.now[:alert] = t('.fail')
+      flash.now[:danger] = t('.fail')
       render :new
     end
   end
@@ -24,9 +24,9 @@ class PresetItemsController < ApplicationController
   def update
     @preset_item = PresetItem.find(params[:id])
     if @preset_item.update(item_params)
-      redirect_to preset_path(@preset), notice: t('.success', name: @preset_item.preset_item_name)
+      redirect_to preset_path(@preset), success: t('.success', name: @preset_item.preset_item_name)
     else
-      flash.now[:alert] = t('.fail', name: PresetItem.find(@preset_item.id).preset_item_name)
+      flash.now[:danger] = t('.fail', name: PresetItem.find(@preset_item.id).preset_item_name)
       render :edit
     end
   end
@@ -35,7 +35,7 @@ class PresetItemsController < ApplicationController
     @preset_item = PresetItem.find(params[:id])
     name = @preset_item.preset_item_name
     @preset_item.destroy!
-    redirect_to preset_path(@preset), notice: t('.success', name: name)
+    redirect_to preset_path(@preset), success: t('.success', name: name)
   end
 
   private
