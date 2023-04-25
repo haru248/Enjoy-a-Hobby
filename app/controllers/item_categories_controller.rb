@@ -10,18 +10,18 @@ class ItemCategoriesController < ApplicationController
   def create
     @item_category = @preset.item_categories.new(category_params)
     if @item_category.save
-      redirect_to preset_item_categories_path(@preset), notice: t('.success', name: @item_category.item_category_name)
+      redirect_to preset_item_categories_path(@preset), success: t('.success', name: @item_category.item_category_name)
     else
-      redirect_to preset_item_categories_path(@preset), alert: t('.fail')
+      redirect_to preset_item_categories_path(@preset), danger: t('.fail')
     end
   end
 
   def update
     @item_category = @preset.item_categories.find(params[:id])
     if @item_category.update(category_params)
-      redirect_to preset_item_categories_path(@preset), notice: t('.success', name: @item_category.item_category_name)
+      redirect_to preset_item_categories_path(@preset), success: t('.success', name: @item_category.item_category_name)
     else
-      redirect_to preset_item_categories_path(@preset), alert: t('.fail', name:  ItemCategory.find(@item_category.id).item_category_name)
+      redirect_to preset_item_categories_path(@preset), danger: t('.fail', name:  ItemCategory.find(@item_category.id).item_category_name)
     end
   end
 
@@ -29,7 +29,7 @@ class ItemCategoriesController < ApplicationController
     @item_category = @preset.item_categories.find(params[:id])
     name = @item_category.item_category_name
     @item_category.destroy!
-    redirect_to preset_item_categories_path(@preset), notice: t('.success', name: name)
+    redirect_to preset_item_categories_path(@preset), success: t('.success', name: name)
   end
 
   private

@@ -1,10 +1,13 @@
 <% content_for(:title, t('.title')) %>
 <% breadcrumb :password_reset_new %>
-<h1><%= t '.title' %></h1>
-<%= form_with url: password_resets_path, local: true, method: :post do |form| %>
-  <div class="field">
-    <%= form.label t('.user_email') %><br />
-    <%= form.text_field :email %>
-    <%= form.submit t('defaults.send') %>
-  </div>
-<% end %>
+
+<div class = 'container password_reset_form'>
+  <%= form_with url: password_resets_path, local: true, method: :post, class: 'password_reset_width form' do |f| %>
+    <h1 class = 'h3 mb-3 font-weight-normal text-center'><%= t '.title' %></h1>
+    <p><%= t('.explanation') %><br><%= t('.explanation2') %></p>
+    <%= f.label t('.user_email'), class: 'badge badge-primary' %>
+    <%= f.text_field :email, class: 'form-control' %>
+    <br>
+    <%= f.submit t('defaults.send'), class: 'btn btn-lg btn-primary btn-block' %>
+  <% end %>
+</div>

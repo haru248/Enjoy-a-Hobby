@@ -1,23 +1,32 @@
 <% content_for(:title, t('.title')) %>
 <% breadcrumb :inventory_list_index %>
-<h1><%= t '.title' %></h1>
 
+<h1 class = 'display-5 text-center title_margin'><%= t '.title' %></h1>
 <%= render 'search', q: @q, url: inventory_lists_path %>
 
-<%= link_to t('inventory_lists.new.title'), new_inventory_list_path %>
-<br>
-<br>
-
-<% if @inventory_lists.present? %>
-  <% @inventory_lists.each do |inventory_list| %>
-    <div class = "inventory_list<%= inventory_list.id %>">
-      <%= inventory_list.inventory_list_name %>
-      <%= link_to t('defaults.show'), inventory_list_path(inventory_list) %>
-      <%= link_to t('defaults.destroy'), inventory_list_path(inventory_list), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: inventory_list.inventory_list_name)} %>
-      <br>
-    </div>
-  <% end %>
-  <%= paginate @inventory_lists %>
-<% else %>
-  <p><%= t '.list_less' %></p>
-<% end %>
+<div class = 'py-4'>
+  <div class = 'container'>
+    <%= link_to t('inventory_lists.new.title'), new_inventory_list_path, class: 'btn btn-sm btn-primary' %>
+    <% if @inventory_lists.present? %>
+      <ul class = 'list-group'>
+        <% @inventory_lists.each do |inventory_list| %>
+          <li class = 'list-group-item bg-light'>
+            <div class = "inventory_list<%= inventory_list.id %> d-flex justify-content-between align-items-center">
+              <p class = 'p_margin_auto'><%= inventory_list.inventory_list_name %></p>
+              <div class = 'btn-group'>
+                <%= link_to t('defaults.show'), inventory_list_path(inventory_list), class: 'btn btn-sm btn-outline-secondary' %>
+                <%= link_to t('defaults.destroy'), inventory_list_path(inventory_list), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: inventory_list.inventory_list_name)}, class: 'btn btn-sm btn-outline-secondary' %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+      <%= paginate @inventory_lists %>
+    <% else %>
+      <div class = 'text-center item_less_margin'>
+        <h3><%= t '.list_less' %></h3>
+        <p class = 'lead'><%= t '.list_less2' %></p>
+      </div>
+    <% end %>
+  <div>
+</div>

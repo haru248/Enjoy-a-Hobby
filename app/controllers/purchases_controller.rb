@@ -9,9 +9,9 @@ class PurchasesController < ApplicationController
   def create
     @purchase = @purchase_list.purchases.new(purchase_params)
     if @purchase.save
-      redirect_to purchase_list_path(@purchase_list), notice: t('.success', name: @purchase.purchase_name)
+      redirect_to purchase_list_path(@purchase_list), success: t('.success', name: @purchase.purchase_name)
     else
-      flash.now[:alert] = t('.fail')
+      flash.now[:danger] = t('.fail')
       render :new
     end
   end
@@ -23,9 +23,9 @@ class PurchasesController < ApplicationController
   def update
     @purchase = @purchase_list.purchases.find(params[:id])
     if @purchase.update(purchase_params)
-      redirect_to purchase_list_path(@purchase_list), notice: t('.success', name: @purchase.purchase_name)
+      redirect_to purchase_list_path(@purchase_list), success: t('.success', name: @purchase.purchase_name)
     else
-      flash.now[:alert] = t('.fail', name: Purchase.find(@purchase.id).purchase_name)
+      flash.now[:danger] = t('.fail', name: Purchase.find(@purchase.id).purchase_name)
       render :edit
     end
   end
@@ -34,7 +34,7 @@ class PurchasesController < ApplicationController
     @purchase = @purchase_list.purchases.find(params[:id])
     name = @purchase.purchase_name
     @purchase.destroy!
-    redirect_to purchase_list_path(@purchase_list), notice: t('.success', name: name)
+    redirect_to purchase_list_path(@purchase_list), success: t('.success', name: name)
   end
 
   private
