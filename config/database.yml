@@ -50,6 +50,7 @@ test:
 #
 production:
   <<: *default
-  database: LIVE_Planning_production
+  adapter: postgresql
+  # database: LIVE_Planning_production
   username: LIVE_Planning
-  password: <%= ENV['LIVE_Planning_DATABASE_PASSWORD'] %> #まだ作ってない
+  password: <%= ENV['LIVE_Planning_DATABASE_PASSWORD'] %>
