@@ -6,6 +6,6 @@ class CreatePropertyCategories < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-    add_index :property_categories, [:category_name, :inventory_list_id], unique: true
+    add_index :property_categories, [:category_name, :inventory_list_id], unique: true, name: 'index_property_categories_unique'
   end
 end
