@@ -54,3 +54,4 @@ production:
   # database: LIVE_Planning_production
   username: LIVE_Planning
   password: <%= ENV['LIVE_Planning_DATABASE_PASSWORD'] %>
+  encoding: utf8
