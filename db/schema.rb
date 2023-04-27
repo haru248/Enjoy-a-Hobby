@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2023_03_29_082457) do
     t.bigint "inventory_list_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_name", "inventory_list_id"], name: "index_property_categories_on_category_name_and_inventory_list_id", unique: true
+    t.index ["category_name", "inventory_list_id"], name: "index_property_categories_unique", unique: true
     t.index ["inventory_list_id"], name: "index_property_categories_on_inventory_list_id"
   end
 
