@@ -63,11 +63,11 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "Enjoy_a_Hobby_production"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { protocol: 'https', host:'live-planning.herokuapp.com'}
+  config.action_mailer.default_url_options = { host: 'live-planning.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     port: 587,
-    address:"smtp.gmail.com",
+    address: 'smtp.gmail.com',
     domain: 'gmail.com',
     user_name: ENV['GMAIL_ADDRESS'],
     password: ENV['GMAIL_PASSWORD'],
