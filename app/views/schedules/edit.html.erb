@@ -1,0 +1,4 @@
+<% content_for(:title, t('.title')) %>
+<% breadcrumb :schedule_edit, @schedule %>
+
+<%= render 'schedule_form', { schedule: @schedule, title: t('.title') } %>

@@ -41,6 +41,21 @@ ja:
         purchase_name: '購入品名'
         price: '値段'
         quantity: '個数'
+      schedule:
+        id: 'スケジュールID'
+        schedule_name: 'スケジュール名'
+        start_date: '初日'
+        end_date: '最終日'
+        venue: '会場'
+        lodging: '宿泊地'
+        memo: 'メモ'
+        inventory_list_id: '使用する持ち物リスト'
+        purchase_list_id: '使用する物販購入リスト'
+      live_time:
+        id: '開場・開演時間ID'
+        live_date: 'ライブ日'
+        opening_time: '開場時間'
+        start_time: '開演時間'
   attributes:
     created_at: '作成日'
     updates_at: '更新日'

@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
   def purchase_list_record_not_found
     redirect_to purchase_lists_path, danger: t('defaults.record_not_found')
   end
+
+  def schedule_record_not_found
+    redirect_to schedules_path, danger: t('defaults.record_not_found')
+  end
 end

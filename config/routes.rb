@@ -27,4 +27,7 @@ Rails.application.routes.draw do
   resources :purchase_lists do
     resources :purchases, only: %i[new create edit update destroy]
   end
+  resources :schedules do
+    resources :live_times, only: %i[new create edit update destroy]
+  end
 end

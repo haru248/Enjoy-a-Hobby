@@ -34,3 +34,9 @@ ja:
     profile_show: 'プロフィール確認'
     profile_edit: '編集'
     profile_password_reset: 'パスワードリセット'
+    schedule_index: 'スケジュール一覧'
+    schedule_new: 'スケジュール作成'
+    schedule_show: "%{name}"
+    schedule_edit: 'スケジュール編集'
+    live_time_new: '開場・開演時間登録'
+    live_time_edit: '開場・開演時間編集'
