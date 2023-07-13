@@ -1,0 +1,4 @@
+<% content_for(:title, t('.title')) %>
+<% breadcrumb :live_time_edit, @schedule, @live_time %>
+
+<%= render 'live_time_form', { schedule: @schedule, live_time: @live_time, title: t('.title') } %>

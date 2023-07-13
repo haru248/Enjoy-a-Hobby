@@ -10,6 +10,7 @@ ja:
     use: '使用'
     destroy_confirm: "%{name}を削除してよろしいですか?"
     category_destroy_confirm: "カテゴリーを削除すると、そのカテゴリーの持ち物も削除されます。%{name}を削除してよろしいですか?"
+    live_time_destroy_confirm: '開場・開演時間を削除してよろしいですか?'
     register: '登録'
     send: '送信'
     save: '保存'
@@ -17,6 +18,12 @@ ja:
     record_not_found: 'アクセスしたページは存在しません'
     yen: '円'
     quantity: '個'
+    unregistered: '未登録'
+    all_day: '全日'
+    opening: '開場'
+    opening_time_less: '開場時間未登録'
+    start: '開演'
+    start_time_less: '開演時間未登録'
     preset: 'プリセット'
     inventory_list: '持ち物リスト'
     purchase_list: '物販購入リスト'
@@ -30,6 +37,14 @@ ja:
         preset_name_cont: '検索ワード'
         inventory_list_name_cont: '検索ワード'
         purchase_list_name_cont: '検索ワード'
+        schedule_name_cont: '検索ワード'
+  time:
+    formats:
+      default: "%H:%M"
+  date:
+    formats:
+      default: "%m/%d"
+      long: "%Y/%m/%d"
   static_pages:
     top:
       title: 'LIVE Pl@nning'
@@ -51,6 +66,12 @@ ja:
         ライブの物販をサポート！
         グッズ名、値段、個数を登録出来るリストを作成可能。
         物販で買うものを忘れないようにリストを作成しよう！
+      function_4: '機能4'
+      function_name_4: 'スケジュール'
+      function_explain_4: |
+        ライブのスケジュール管理をサポート！
+        開場名や開場・開演時間、使用するリストなどを登録可能。
+        ライブに関することをまとめて管理しよう！
   users:
     new:
       title: 'ユーザー登録'
@@ -88,7 +109,8 @@ ja:
       function1: '持ち物リスト作成時に使用できるプリセットの作成・管理が行えます'
       function2: 'チェックリスト方式で使用可能な持ち物リストの作成・管理が行えます'
       function3: 'グッズ名、値段、個数で登録できる購入リストの作成・管理が行えます'
-      function4: 'ユーザーネーム、メールアドレス、パスワードの変更が行えます'
+      function4: '日程や会場などを登録できるスケジュールの作成・管理が行えます'
+      function5: 'ユーザーネーム、メールアドレス、パスワードの変更が行えます'
   presets:
     index:
       title: 'プリセット一覧'
@@ -256,6 +278,47 @@ ja:
       fail: "%{name}の情報の更新に失敗しました"
     destroy:
       success: "%{name}を削除しました"
+  schedules:
+    index:
+      title: 'スケジュール一覧'
+      schedule_less: 'スケジュールがありません'
+      schedule_less2: 'スケジュール作成からスケジュールを作って活用しましょう!'
+    schedule_form:
+      explanation: 'スケジュール名以外は任意入力です'
+    new:
+      title: 'スケジュール作成'
+    create:
+      success: "%{name}を作成しました"
+      fail: 'スケジュールの作成に失敗しました'
+    show:
+      title: 'スケジュール詳細'
+      schedule_destroy: 'スケジュール削除'
+      date: '日程'
+      live_time: '開場・開演時間'
+      live_time_less: '開場・開演時間未登録'
+      list_show: 'リスト詳細へ'
+    edit:
+      title: 'スケジュール編集'
+    update:
+      success: 'スケジュール内容を更新しました'
+      fail: 'スケジュール内容の更新に失敗しました'
+    destroy:
+      success: "%{name}を削除しました"
+  live_times:
+    live_time_form:
+      explanation: 'ライブ日が未入力の場合、全日になります'
+    new:
+      title: '開場・開演時間登録'
+    create:
+      success: "%{date}の開場・開演時間を登録しました"
+      fail: '開場・開演時間の登録に失敗しました'
+    edit:
+      title: '開場・開演時間編集'
+    update:
+      success: "%{date}の開場・開演時間を更新しました"
+      fail: '開場・開演時間の更新に失敗しました'
+    destroy:
+      success: "%{date}の開場・開演時間を削除しました"
   profiles:
     show:
       title: 'ユーザー情報'

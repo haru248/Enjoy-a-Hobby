@@ -1,0 +1,80 @@
+<% content_for(:title, @schedule.schedule_name) %>
+<% breadcrumb :schedule_show, @schedule %>
+
+<h1 class = 'display-5 text-center title_margin'><%= t('.title') %></h1>
+
+<div class = 'card card_margin bg-light mx-auto' style = 'width: 80%;'>
+  <div class = 'card-body'>
+    <h4 class = 'card-title text-center'><%= @schedule.schedule_name %></h5>
+    <div class = 'container'>
+      <div class = 'btn-group btn-group_margin'>
+        <%= link_to t('schedules.edit.title'), edit_schedule_path(@schedule), class: 'btn btn-sm btn-outline-primary' %>
+        <%= link_to t('.schedule_destroy'), schedule_path(@schedule), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: @schedule.schedule_name)}, class: 'btn btn-sm btn-outline-danger' %>
+      </div>
+    </div>
+
+    <ul class = 'list-group list-group-flush'>
+      <li class = 'list-group-item schedule_date'>
+        <label class = 'badge badge-primary'><%= t '.date' %></label>
+        <p class = 'p_margin_auto'><%= date_display(@schedule) %></p>
+      </li>
+      <li class = 'list-group-item schedule_venue'>
+        <label class = 'badge badge-primary'><%= Schedule.human_attribute_name(:venue) %></label>
+        <p class = 'p_margin_auto'><%= venue_display(@schedule) %></p>
+      </li>
+      <li class = 'list-group-item'>
+        <div class = 'd-flex justify-content-between align-items-center'>
+          <label class = 'badge badge-primary'><%= t '.live_time' %></label>
+          <%= link_to t('live_times.new.title'), new_schedule_live_time_path(@schedule), class: 'btn btn-sm btn-outline-secondary' %>
+        </div>
+        <% if @live_times.present? %>
+          <ul class = 'list-group list-group-flush'>
+            <% @live_times.each do |live_time| %>
+              <li class = 'list-group-item'>
+                <div class = "live_time<%= live_time.id %> d-flex justify-content-between align-items-center">
+                  <p class = 'p_margin_auto'><%= live_date_display(live_time) %></p>
+                  <p class = 'p_margin_auto'><%= opening_time_display(live_time) %></p>
+                  <p class = 'p_margin_auto'><%= start_time_display(live_time) %></p>
+                  <div class = 'btn-group btn-group_margin'>
+                    <%= link_to t('defaults.edit'), edit_schedule_live_time_path(@schedule, live_time), class: 'btn btn-sm btn-outline-primary' %>
+                    <%= link_to t('defaults.destroy'), schedule_live_time_path(@schedule, live_time), method: :delete, data: {confirm: t('defaults.live_time_destroy_confirm')}, class: 'btn btn-sm btn-outline-danger' %>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p class = 'p_margin_auto'><%= t '.live_time_less' %></p>
+        <% end %>
+      </li>
+      <li class = 'list-group-item schedule_lodging'>
+        <label class = 'badge badge-primary'><%= Schedule.human_attribute_name(:lodging) %></label>
+        <p class = 'p_margin_auto'><%= lodging_display(@schedule) %></p>
+      </li>
+      <% if @schedule.memo.present? %>
+        <li class = 'list-group-item schedule_memo'>
+          <label class = 'badge badge-primary'><%= Schedule.human_attribute_name(:memo) %></label>
+          <%= simple_format @schedule.memo, class: 'p_margin_auto' %>
+        </li>
+      <% end %>
+      <li class = 'list-group-item schedule_inventory_list'>
+        <label class = 'badge badge-primary'><%= Schedule.human_attribute_name(:inventory_list_id) %></label>
+        <div class = 'd-flex justify-content-between align-items-center'>
+          <p class = 'p_margin_auto'><%= inventory_list_display(@schedule) %></p>
+          <% if @schedule.inventory_list_id.present? %>
+            <%= link_to t('.list_show'), inventory_list_path(InventoryList.find(@schedule.inventory_list_id)), class: 'btn btn-sm btn-outline-secondary' %>
+          <% end %>
+        </div>
+      </li>
+      <li class = 'list-group-item schedule_purchase_list'>
+        <label class = 'badge badge-primary'><%= Schedule.human_attribute_name(:purchase_list_id) %></label>
+        <div class = 'd-flex justify-content-between align-items-center'>
+          <p class = 'p_margin_auto'><%= purchase_list_display(@schedule) %></p>
+          <% if @schedule.purchase_list_id.present? %>
+            <%= link_to t('.list_show'), purchase_list_path(PurchaseList.find(@schedule.purchase_list_id)), class: 'btn btn-sm btn-outline-secondary' %>
+          <% end %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

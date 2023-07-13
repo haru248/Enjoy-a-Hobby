@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :presets, dependent: :destroy
   has_many :inventory_lists, dependent: :destroy
   has_many :purchase_lists, dependent: :destroy
+  has_many :schedules, dependent: :destroy
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

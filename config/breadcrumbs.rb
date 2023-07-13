@@ -165,3 +165,33 @@ crumb :profile_password_reset do
   link t('gretel.profile_password_reset')
   parent :profile_show
 end
+
+crumb :schedule_index do
+  link t('gretel.schedule_index'), schedules_path
+  parent :root
+end
+
+crumb :schedule_new do
+  link t('gretel.schedule_new')
+  parent :schedule_index
+end
+
+crumb :schedule_show do |schedule|
+  link t('gretel.schedule_show', name: schedule.schedule_name), schedule_path(schedule)
+  parent :schedule_index
+end
+
+crumb :schedule_edit do |schedule|
+  link t('gretel.schedule_edit')
+  parent :schedule_show, Schedule.find(schedule.id)
+end
+
+crumb :live_time_new do |schedule|
+  link t('gretel.live_time_new')
+  parent :schedule_show, schedule
+end
+
+crumb :live_time_edit do |schedule, live_time|
+  link t('gretel.live_time_edit')
+  parent :schedule_show, schedule
+end

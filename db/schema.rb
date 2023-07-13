@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_29_082457) do
+ActiveRecord::Schema.define(version: 2023_05_16_092037) do
 
   create_table "inventory_lists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "inventory_list_name", null: false
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 2023_03_29_082457) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_category_name", "preset_id"], name: "index_item_categories_on_item_category_name_and_preset_id", unique: true
     t.index ["preset_id"], name: "index_item_categories_on_preset_id"
+  end
+
+  create_table "live_times", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.date "live_date"
+    t.time "opening_time"
+    t.time "start_time"
+    t.bigint "schedule_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["schedule_id"], name: "index_live_times_on_schedule_id"
   end
 
   create_table "preset_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -80,6 +90,23 @@ ActiveRecord::Schema.define(version: 2023_03_29_082457) do
     t.index ["purchase_list_id"], name: "index_purchases_on_purchase_list_id"
   end
 
+  create_table "schedules", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "schedule_name", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.string "venue"
+    t.string "lodging"
+    t.text "memo"
+    t.bigint "user_id"
+    t.bigint "inventory_list_id"
+    t.bigint "purchase_list_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["inventory_list_id"], name: "index_schedules_on_inventory_list_id"
+    t.index ["purchase_list_id"], name: "index_schedules_on_purchase_list_id"
+    t.index ["user_id"], name: "index_schedules_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "user_name", null: false
     t.string "email", null: false
@@ -97,10 +124,14 @@ ActiveRecord::Schema.define(version: 2023_03_29_082457) do
 
   add_foreign_key "inventory_lists", "users"
   add_foreign_key "item_categories", "presets"
+  add_foreign_key "live_times", "schedules"
   add_foreign_key "preset_items", "item_categories"
   add_foreign_key "presets", "users"
   add_foreign_key "properties", "property_categories"
   add_foreign_key "property_categories", "inventory_lists"
   add_foreign_key "purchase_lists", "users"
   add_foreign_key "purchases", "purchase_lists"
+  add_foreign_key "schedules", "inventory_lists"
+  add_foreign_key "schedules", "purchase_lists"
+  add_foreign_key "schedules", "users"
 end

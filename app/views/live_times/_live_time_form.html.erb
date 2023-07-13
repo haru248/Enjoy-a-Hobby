@@ -1,0 +1,25 @@
+<div class = 'container item_form'>
+  <%= form_with model: [schedule, live_time], local: true, class: 'item_width form' do |f| %>
+    <h1 class = 'h3 mb-3 font-weight-normal text-center'><%= title %></h1>
+    <h1 class = 'h6 mb-3 font-weight-normal text-center'><%= t '.explanation' %></h1>
+    <%= render 'shared/error_messages', model: live_time %>
+
+    <%= f.label :live_date, class: 'badge badge-primary' %><br>
+    <%= f.date_field :live_date, class: 'form-control' %>
+
+    <%= f.label :opening_time, class: 'badge badge-primary' %><br>
+    <%= f.time_field :opening_time, class: 'form-control' %>
+
+    <%= f.label :start_time, class: 'badge badge-primary' %><br>
+    <%= f.time_field :start_time, class: 'form-control' %><br>
+
+    <% if live_time.edit? %>
+      <div class = 'btn-group btn-block'>
+        <%= f.submit class: 'btn btn-lg btn-outline-primary' %>
+        <%= link_to t('defaults.destroy'), schedule_live_time_path(schedule, live_time), method: :delete, data: {confirm: t('defaults.live_time_destroy_confirm')}, class: 'btn btn-lg btn-outline-danger' %>
+      </div>
+    <% else %>
+      <%= f.submit class: 'btn btn-lg btn-primary btn-block' %>
+    <% end %>
+  <% end %>
+</div>
