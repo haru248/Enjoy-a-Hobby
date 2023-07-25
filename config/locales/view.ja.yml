@@ -222,7 +222,7 @@ ja:
       success: "%{name}を削除しました"
   use_presets:
     index:
-      title: 'プリセット使用一覧'
+      title: '使用できるプリセット一覧'
       preset_less: 'プリセットがありません'
       preset_less2: 'プリセットを作成して持ち物リストの作成に役立てましょう!'
     show:

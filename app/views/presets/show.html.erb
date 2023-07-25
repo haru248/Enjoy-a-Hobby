@@ -11,6 +11,8 @@
         <%= link_to t('.category_index'), preset_item_categories_path(@preset), class: 'btn btn-sm btn-outline-primary' %>
         <%= link_to t('.item_new'), new_preset_preset_item_path(@preset), class: 'btn btn-sm btn-outline-primary' %>
       </div>
+    </div>
+    <div class = 'container'>
       <div class = 'btn-group btn-group_margin'>
         <%= link_to t('presets.edit.title'), edit_preset_path(@preset), class: 'btn btn-sm btn-outline-primary' %>
         <%= link_to t('.preset_destroy'), preset_path(@preset), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: @preset.preset_name)}, class: 'btn btn-sm btn-outline-danger' %>
