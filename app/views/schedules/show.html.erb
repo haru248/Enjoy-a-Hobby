@@ -1,6 +1,10 @@
 <% content_for(:title, @schedule.schedule_name) %>
 <% breadcrumb :schedule_show, @schedule %>
 
+<div class = 'modal_redisplay_right'>
+  <i class = 'fa-sharp fa-regular fa-circle-question fa-xl modal_redisplay'></i>
+</div>
+
 <h1 class = 'display-5 text-center title_margin'><%= t('.title') %></h1>
 
 <div class = 'card card_margin bg-light mx-auto' style = 'width: 80%;'>
@@ -76,5 +80,19 @@
         </div>
       </li>
     </ul>
+  </div>
+</div>
+
+<!-- モーダルウィンドウ -->
+<%= javascript_pack_tag 'schedule_show_modal' %>
+<div class = 'bg_modal_window'>
+  <div class = 'modal_window' id = 'modal1' alt = 'modal'>
+    <span><%= image_tag 'schedule_modal_step1.png', class: 'modal_image' %></span>
+  </div>
+  <div class = 'modal_window' id = 'modal2' alt = 'modal'>
+    <span><%= image_tag 'schedule_modal_step2.png', class: 'modal_image' %></span>
+  </div>
+  <div class = 'modal_window' id = 'modal3' alt = 'modal'>
+    <span><%= image_tag 'schedule_modal_step3.png', class: 'modal_image' %></span>
   </div>
 </div>

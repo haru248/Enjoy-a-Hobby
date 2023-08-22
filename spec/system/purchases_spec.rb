@@ -155,6 +155,7 @@ RSpec.describe 'Purchases', type: :system do
       context '物販購入リスト詳細ページ' do
         it '購入品の削除に成功する' do
           visit purchase_list_path(purchase_list)
+          modal_reset
           within ".purchase#{purchase.id}" do
             click_on '削除'
           end

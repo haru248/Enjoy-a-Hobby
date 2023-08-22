@@ -81,6 +81,7 @@ RSpec.describe 'PresetItems', type: :system do
       context 'プリセット詳細ページ' do
         it '持ち物の削除に成功する' do
           visit preset_path(preset)
+          modal_reset
           within ".item#{item.id}" do
             click_on '削除'
           end
