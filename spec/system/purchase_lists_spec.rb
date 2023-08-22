@@ -109,6 +109,7 @@ RSpec.describe 'PurchaseLists', type: :system do
       context '物販購入リスト詳細ページ' do
         it '物販購入リストの削除をクリックすると物販購入リストが削除される' do
           visit purchase_list_path(purchase_list)
+          modal_reset
           click_on '物販購入リスト削除'
           expect(page.accept_confirm).to eq "#{purchase_list.purchase_list_name}を削除してよろしいですか?"
           expect(current_path).to eq purchase_lists_path

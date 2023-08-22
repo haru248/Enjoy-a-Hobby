@@ -109,6 +109,7 @@ RSpec.describe 'Presets', type: :system do
       context 'プリセット詳細ページ' do
         it 'プリセットの削除をクリックするとプリセットが削除される' do
           visit preset_path(preset)
+          modal_reset
           click_on 'プリセット削除'
           expect(page.accept_confirm).to eq "#{preset.preset_name}を削除してよろしいですか?"
           expect(current_path).to eq presets_path

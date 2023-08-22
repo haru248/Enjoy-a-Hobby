@@ -68,6 +68,7 @@ RSpec.describe 'Users', type: :system do
           within ".preset#{Preset.find_by(preset_name: '日用品(デフォルト)').id}" do
             click_on '詳細'
           end
+          modal_reset
           expect(page).to have_content '日用品'
           expect(page).to have_content '充電器'
           expect(page).to have_content 'モバイルバッテリー'

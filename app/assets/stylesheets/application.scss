@@ -152,3 +152,58 @@
 .fm_margin_bottom {
   margin-bottom: 0;
 }
+.use_btn {
+  float: right;
+}
+/* モーダルの必要数が増えた場合ここに増やす */
+#modal1 {
+  display: block;
+}
+#modal2 {
+  display: none;
+}
+#modal3 {
+  display: none;
+}
+#modal4 {
+  display: none;
+}
+#modal5 {
+  display: none;
+}
+.modal_image {
+  width: 100%;
+  height: 100%;
+}
+.modal_redisplay_right {
+  text-align: right;
+}
+body.open_modal {
+  overflow: hidden;
+}
+.bg_modal_window {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+}
+body.open_modal .bg_modal_window {
+  opacity: 1;
+  visibility: visible;
+}
+.modal_window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 70%;
+  max-width: 800px;
+  min-width: 500px;
+  background-color: #fff;
+}

@@ -1,6 +1,10 @@
 <% content_for(:title, @preset.preset_name) %>
 <% breadcrumb :preset_show, @preset %>
 
+<div class = 'modal_redisplay_right'>
+  <i class = 'fa-sharp fa-regular fa-circle-question fa-xl modal_redisplay'></i>
+</div>
+
 <h1 class = 'display-5 text-center title_margin'><%= t('.title') %></h1>
 
 <div class = 'card card_margin bg-light mx-auto' style = 'width: 80%;'>
@@ -33,7 +37,7 @@
                         <p class = 'p_margin_auto'><%= preset_item.preset_item_name %></p>
                         <div class = 'btn-group'>
                           <%= link_to t('defaults.edit'), edit_preset_preset_item_path(@preset, preset_item), class: 'btn btn-sm btn-outline-secondary' %>
-                          <%= link_to t('defaults.destroy'), preset_preset_item_path(@preset, preset_item), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: preset_item.preset_item_name)}, class: 'btn btn-sm btn-outline-secondary' %>
+                          <%= link_to t('defaults.destroy'), preset_preset_item_path(@preset, preset_item), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: preset_item.preset_item_name)}, class: 'btn btn-sm btn-outline-danger' %>
                         </div>
                       </div>
                     </li>
@@ -54,5 +58,19 @@
         <p class = 'lead'><%= t '.category_less2' %></p>
       </div>
     <% end %>
+  </div>
+</div>
+
+<!-- モーダルウィンドウ -->
+<%= javascript_pack_tag 'preset_show_modal' %>
+<div class = 'bg_modal_window'>
+  <div class = 'modal_window' id = 'modal1' alt = 'modal'>
+    <span><%= image_tag 'preset_modal_step1.png', class: 'modal_image' %></span>
+  </div>
+  <div class = 'modal_window' id = 'modal2' alt = 'modal'>
+    <span><%= image_tag 'preset_modal_step2.png', class: 'modal_image' %></span>
+  </div>
+  <div class = 'modal_window' id = 'modal3' alt = 'modal'>
+    <span><%= image_tag 'preset_modal_step3.png', class: 'modal_image' %></span>
   </div>
 </div>

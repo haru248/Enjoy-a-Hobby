@@ -81,6 +81,7 @@ RSpec.describe 'Schedules', type: :system do
           only_end_date_schedule = create(:schedule, user: user, end_date: Date.new(2023, 01, 02))
           full_date_schedule = create(:schedule, user: user, start_date: Date.new(2023, 01, 03), end_date: Date.new(2023, 01, 04))
           visit schedule_path(unregistered_schedule)
+          modal_reset
           within '.schedule_date' do
             expect(page).to have_content '未登録'
           end
@@ -103,6 +104,7 @@ RSpec.describe 'Schedules', type: :system do
           unregistered_schedule = create(:schedule, user: user)
           registered_schedule = create(:schedule, user: user, venue: 'venue1')
           visit schedule_path(unregistered_schedule)
+          modal_reset
           within '.schedule_venue' do
             expect(page).to have_content '未登録'
           end
@@ -117,6 +119,7 @@ RSpec.describe 'Schedules', type: :system do
           unregistered_schedule = create(:schedule, user: user)
           registered_schedule = create(:schedule, user: user, lodging: 'lodging1')
           visit schedule_path(unregistered_schedule)
+          modal_reset
           within '.schedule_lodging' do
             expect(page).to have_content '未登録'
           end
@@ -131,6 +134,7 @@ RSpec.describe 'Schedules', type: :system do
           unregistered_schedule = create(:schedule, user: user)
           registered_schedule = create(:schedule, user: user, memo: 'memo')
           visit schedule_path(unregistered_schedule)
+          modal_reset
           expect(page).not_to have_css '.schedule_memo'
           visit schedule_path(registered_schedule)
           within '.schedule_memo' do
@@ -144,6 +148,7 @@ RSpec.describe 'Schedules', type: :system do
           unregistered_schedule = create(:schedule, user: user)
           registered_schedule = create(:schedule, user: user, inventory_list: inventory_list)
           visit schedule_path(unregistered_schedule)
+          modal_reset
           within '.schedule_inventory_list' do
             expect(page).to have_content '未登録'
           end
@@ -159,6 +164,7 @@ RSpec.describe 'Schedules', type: :system do
           unregistered_schedule = create(:schedule, user: user)
           registered_schedule = create(:schedule, user: user, purchase_list: purchase_list)
           visit schedule_path(unregistered_schedule)
+          modal_reset
           within '.schedule_purchase_list' do
             expect(page).to have_content '未登録'
           end
@@ -206,6 +212,7 @@ RSpec.describe 'Schedules', type: :system do
       context 'スケジュール詳細ページ' do
         it 'スケジュール削除をクリックするとスケジュールが削除される' do
           visit schedule_path(schedule)
+          modal_reset
           click_on 'スケジュール削除'
           expect(page.accept_confirm).to eq "#{schedule.schedule_name}を削除してよろしいですか?"
           expect(current_path).to eq schedules_path

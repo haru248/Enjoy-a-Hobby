@@ -109,6 +109,7 @@ RSpec.describe 'InventoryLists', type: :system do
       context '持ち物リスト詳細ページ' do
         it '持ち物リスト削除をクリックすると持ち物リストが削除される' do
           visit inventory_list_path(inventory_list)
+          modal_reset
           click_on '持ち物リスト削除'
           expect(page.accept_confirm).to eq "#{inventory_list.inventory_list_name}を削除してよろしいですか?"
           expect(current_path).to eq inventory_lists_path

@@ -6,7 +6,10 @@ RSpec.describe 'LiveTimes', type: :system do
     let!(:schedule) { create(:schedule, user: user) }
     before { login(user) }
     context '開場・開演時間登録' do
-      before { visit new_schedule_live_time_path(schedule) }
+      before do
+        visit schedule_path(schedule)
+        visit new_schedule_live_time_path(schedule)
+      end
       context 'フォームの入力値が正常' do
         it '開場・開演時間の登録に成功する' do
           fill_in 'live_time_live_date', with: Date.new(2023, 01, 01)
@@ -21,7 +24,10 @@ RSpec.describe 'LiveTimes', type: :system do
     end
     context '開場・開演時間編集' do
       let!(:live_time) { create(:live_time, schedule: schedule) }
-      before { visit edit_schedule_live_time_path(schedule, live_time) }
+      before do
+        visit schedule_path(schedule)
+        visit edit_schedule_live_time_path(schedule, live_time)
+      end
       context 'フォームの入力値が正常' do
         it '開場・開演時間の編集に成功する' do
           fill_in 'live_time_live_date', with: Date.new(2023, 01, 01)
@@ -39,6 +45,7 @@ RSpec.describe 'LiveTimes', type: :system do
       context 'スケジュール詳細' do
         it '開場・開演時間の削除に成功する' do
           visit schedule_path(schedule)
+          modal_reset
           within ".live_time#{live_time.id}" do
             click_on '削除'
           end
@@ -50,6 +57,7 @@ RSpec.describe 'LiveTimes', type: :system do
       end
       context '開場・開演時間詳細' do
         it '開場・開演時間の削除に成功する' do
+          visit schedule_path(schedule)
           visit edit_schedule_live_time_path(schedule, live_time)
           click_on '削除'
           expect(page.accept_confirm).to eq '開場・開演時間を削除してよろしいですか?'
@@ -64,6 +72,7 @@ RSpec.describe 'LiveTimes', type: :system do
         all_day_and_unregistered_live_time = create(:live_time, schedule: schedule)
         registered_live_time = create(:live_time, schedule: schedule, live_date: Date.new(2023, 01, 01), opening_time: Time.new(2023, 1, 1, 0, 0, 0), start_time: Time.new(2023, 1, 1, 1, 0, 0))
         visit schedule_path(schedule)
+        modal_reset
         within ".live_time#{all_day_and_unregistered_live_time.id}" do
           expect(page).to have_content '全日'
           expect(page).to have_content '開場時間未登録'

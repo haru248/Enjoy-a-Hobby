@@ -124,7 +124,7 @@ ja:
     show:
       title: 'プリセット詳細'
       preset_destroy: 'プリセット削除'
-      category_index: 'カテゴリーの追加・編集・削除'
+      category_index: 'カテゴリー編集'
       item_new: '持ち物の追加'
       category_less: '登録されたカテゴリーがありません'
       category_less2: 'カテゴリーを作成して持ち物を登録しましょう!'
@@ -175,7 +175,7 @@ ja:
       title: '持ち物リスト詳細'
       use_list: 'リスト使用'
       list_destroy: '持ち物リスト削除'
-      category_index: 'カテゴリーの追加・編集・削除'
+      category_index: 'カテゴリー編集'
       property_new: '持ち物の追加'
       use_preset: 'プリセット使用'
       category_less: '登録されたカテゴリーがありません'
