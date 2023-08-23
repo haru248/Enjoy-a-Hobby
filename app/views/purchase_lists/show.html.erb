@@ -11,10 +11,12 @@
   <div class = 'card-body'>
     <h4 class = 'card-title text-center'><%= @purchase_list.purchase_list_name %></h4>
     <div class = 'container'>
-      <div class = 'btn-group btn-group_margin'>
+      <div class = 'btn-group btn-group_margin btn_group_upper'>
       <%= link_to t('.purchase_new'), new_purchase_list_purchase_path(@purchase_list), class: 'btn btn-sm btn-outline-primary' %>
       </div>
-      <div class = 'btn-group btn-group_margin'>
+    </div>
+    <div class = 'container'>
+      <div class = 'btn-group btn-group_margin btn_group_lower'>
         <%= link_to t('purchase_lists.edit.title'), edit_purchase_list_path(@purchase_list), class: 'btn btn-sm btn-outline-primary' %>
         <%= link_to t('.list_destroy'), purchase_list_path(@purchase_list), method: :delete, data: {confirm: t('defaults.destroy_confirm', name: @purchase_list.purchase_list_name)}, class: 'btn btn-sm btn-outline-danger' %>
       </div>
