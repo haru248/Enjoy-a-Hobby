@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_16_092037) do
+ActiveRecord::Schema.define(version: 2023_08_25_054550) do
 
   create_table "inventory_lists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "inventory_list_name", null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2023_05_16_092037) do
     t.bigint "item_category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "amazon_url_or_product_name"
     t.index ["item_category_id"], name: "index_preset_items_on_item_category_id"
   end
 
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 2023_05_16_092037) do
     t.bigint "property_category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "amazon_url_or_product_name"
     t.index ["property_category_id"], name: "index_properties_on_property_category_id"
   end
 

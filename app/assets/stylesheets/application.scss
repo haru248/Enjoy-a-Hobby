@@ -161,6 +161,12 @@
 .use_btn {
   float: right;
 }
+.check_label_margin {
+  margin-right: 40px;
+}
+.check_label_border {
+  border-bottom: 2px solid rgb(127, 214, 214);
+}
 /* モーダルの必要数が増えた場合ここに増やす */
 #modal1 {
   display: block;

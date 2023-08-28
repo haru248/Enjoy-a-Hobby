@@ -29,5 +29,8 @@
 </div>
 <%= link_to '', profile_path, method: :delete, id: 'user_destroy' %>
 <input type = 'hidden' id = 'confirm_date' value = "<%= t('.user_destroy_confirm') %>">
-<!-- テスト時のlocalstorageのリセット用 -->
-<a id = 'local_storage_reset'></a>
+
+<% if Rails.env.test? %>
+  <!-- テスト時のlocalstorageのリセット用 -->
+  <a id = 'local_storage_reset'>reset</a>
+<% end %>

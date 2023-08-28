@@ -30,9 +30,13 @@
                 <% property_category.properties.each do |property| %>
                   <div class = "property property<%= property.id %>">
                     <div class = 'form-check d-flex justify-content-between align-items-center'>
-                      <%= label_tag 'property[property_name]', class: 'form-check-label' do %>
-                        <%= check_box_tag :check, "property#{property.id}" %>
-                        <%= property.property_name %>
+                      <%= label_tag 'property[property_name]', class: 'form-check-label check_label_border' do %>
+                        <%= check_box_tag :check, "property#{property.id}", false, class: 'check_label_margin' %>
+                        <% if property.amazon_url_or_product_name.present? %>
+                          <%= link_to property.property_name, check_url_or_keyword(property), target: '_blank' %>
+                        <% else %>
+                          <%= property.property_name %>
+                        <% end %>
                       <% end %>
                     </div>
                   </div>

@@ -1,3 +1,7 @@
+<div class = 'modal_redisplay_right'>
+  <i class = 'fa-sharp fa-regular fa-circle-question fa-xl modal_redisplay'></i>
+</div>
+
 <div class = 'container item_form'>
   <%= form_with model: [preset, preset_item], local: true, class: 'item_width form' do |f| %>
     <h1 class = 'h3 mb-3 font-weight-normal text-center'><%= title %></h1>
@@ -8,6 +12,9 @@
 
     <%= f.label :preset_item_name, class: 'badge badge-primary' %>
     <%= f.text_field :preset_item_name, class: 'form-control' %><br>
+
+    <%= f.label :amazon_url_or_product_name, class: 'badge badge-primary' %><br>
+    <%= f.text_field :amazon_url_or_product_name, class: 'form-control' %><br>
 
     <% if preset_item.edit? %>
       <div class = 'btn-group btn-block'>
@@ -20,4 +27,15 @@
 
     <%= link_to t('presets.show.category_index'), preset_item_categories_path(preset), class: 'btn btn-sm btn-primary' %>
   <% end %>
+</div>
+
+<!-- モーダルウィンドウ -->
+<%= javascript_pack_tag 'property_modal' %>
+<div class = 'bg_modal_window'>
+  <div class = 'modal_window' id = 'modal1' alt = 'modal'>
+    <span><%= image_tag 'property_modal_step1.png', class: 'modal_image' %></span>
+  </div>
+  <div class = 'modal_window' id = 'modal2' alt = 'modal'>
+    <span><%= image_tag 'property_modal_step2.png', class: 'modal_image' %></span>
+  </div>
 </div>
