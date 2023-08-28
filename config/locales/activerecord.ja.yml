@@ -24,6 +24,7 @@ ja:
       preset_item:
         id: 'プリセットアイテムID'
         preset_item_name: '持ち物名'
+        amazon_url_or_product_name: 'amazonの商品ページURLか検索キーワード(任意)'
       inventory_list:
         id: '持ち物リストID'
         inventory_list_name: '持ち物リスト名'
@@ -33,6 +34,7 @@ ja:
       property:
         id: '持ち物ID'
         property_name: '持ち物名'
+        amazon_url_or_product_name: 'amazonの商品ページURLか検索キーワード(任意)'
       purchase_list:
         id: '物販購入リストID'
         purchase_list_name: '物販購入リスト名'

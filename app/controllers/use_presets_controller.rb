@@ -24,7 +24,7 @@ class UsePresetsController < ApplicationController
             property_category = @inventory_list.property_categories.create!(category_name: item_category.item_category_name) if property_category.nil?
             if item_category.preset_items.present?
               item_category.preset_items.each do |preset_item|
-                property_category.properties.create!(property_name: preset_item.preset_item_name)
+                property_category.properties.create!(property_name: preset_item.preset_item_name, amazon_url_or_product_name: preset_item.amazon_url_or_product_name)
               end
             end
           end

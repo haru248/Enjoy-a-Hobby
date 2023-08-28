@@ -33,6 +33,7 @@ RSpec.describe 'UsePresets', type: :system do
             click_on 'このプリセットを使用する'
             expect(page.accept_confirm).to eq "#{inventory_list.inventory_list_name}に#{preset.preset_name}を適用してよろしいですか?"
             expect(current_path).to eq inventory_list_path(inventory_list)
+            modal_reset
             within ".category#{property_category.id}" do
               expect(page).to have_content property_category.category_name
               expect(page).to have_content property.property_name

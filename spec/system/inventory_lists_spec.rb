@@ -122,7 +122,7 @@ RSpec.describe 'InventoryLists', type: :system do
       let!(:inventory_list) { create(:inventory_list, user: user) }
       let!(:property_category) { create(:property_category, inventory_list: inventory_list) }
       let!(:property) { create(:property, property_category: property_category) }
-      let!(:another_property) { create(:property, property_category: property_category) }
+      let!(:another_property) { create(:property, property_category: property_category, amazon_url_or_product_name: 'ボタン電池') }
       before { visit use_inventory_list_path(inventory_list) }
       context '持ち物リスト使用ページ' do
         context '「チェックした持ち物を隠さない」が選択されている' do
@@ -158,6 +158,11 @@ RSpec.describe 'InventoryLists', type: :system do
             expect(page).to have_content property.property_name
             expect(page).to have_content another_property.property_name
           end
+        end
+        it 'amazon_url_or_product_nameが入力されている持ち物名がリンクになっている' do
+          expect(page).to have_content property.property_name
+          expect(page).not_to have_link property.property_name
+          expect(page).to have_link another_property.property_name
         end
       end
     end

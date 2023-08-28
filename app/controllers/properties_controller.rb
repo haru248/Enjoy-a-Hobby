@@ -45,6 +45,6 @@ class PropertiesController < ApplicationController
   end
 
   def property_params
-    params.require(:property).permit(:property_category_id, :property_name)
+    params.require(:property).permit(:property_category_id, :property_name, :amazon_url_or_product_name)
   end
 end

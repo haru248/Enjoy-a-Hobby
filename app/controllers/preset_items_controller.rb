@@ -45,6 +45,6 @@ class PresetItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:preset_item).permit(:item_category_id, :preset_item_name)
+    params.require(:preset_item).permit(:item_category_id, :preset_item_name, :amazon_url_or_product_name)
   end
 end

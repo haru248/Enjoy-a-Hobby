@@ -20,5 +20,6 @@ window.addEventListener('load', function() {
     localStorage.removeItem('LIVE_Pl@nning_inventory_list_modal_first_display_on_or_not');
     localStorage.removeItem('LIVE_Pl@nning_purchase_list_modal_first_display_on_or_not');
     localStorage.removeItem('LIVE_Pl@nning_schedule_modal_first_display_on_or_not');
+    localStorage.removeItem('LIVE_Pl@nning_property_modal_first_display_on_or_not');
   }
 }, false);
