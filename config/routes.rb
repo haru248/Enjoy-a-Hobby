@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
   get 'mypage', to: 'mypages#index'
+  get 'terms_of_servise', to: 'supports#terms_of_servise'
+  get 'privacy_policy', to: 'supports#privacy_policy'
 
   resources :users, only: %i[new create]
   resources :password_resets, only: %i[new create edit update]

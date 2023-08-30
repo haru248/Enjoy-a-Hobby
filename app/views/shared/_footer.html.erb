@@ -1,14 +1,14 @@
 <footer class = 'footer mt-auto py-3 bg-light'>
   <div class = 'container'>
   <ul class = 'nav justify-content-center border-bottom pb-3 mb-3'>
-    <li class = 'nav-item'>
-      <%= link_to t('supports.terms_of_servise.title'), '#', class: 'nav-link disabled' %>
+    <li class = 'nav-item active'>
+      <%= link_to t('supports.terms_of_servise.title'), terms_of_servise_path, class: 'nav-link' %>
     </li>
-    <li class = 'nav-item'>
-      <%= link_to t('supports.privacy_policy.title'), '#', class: 'nav-link disabled' %>
+    <li class = 'nav-item active'>
+      <%= link_to t('supports.privacy_policy.title'), privacy_policy_path, class: 'nav-link' %>
     </li>
-    <li class = 'nav-item'>
-      <%= link_to t('supports.inquiry.title'), '#', class: 'nav-link disabled' %>
+    <li class = 'nav-item active'>
+      <%= link_to t('supports.inquiry.title'), 'https://forms.gle/JkfoWp2jeZUE1cQv5', class: 'nav-link', target: '_blank' %>
     </li>
   </ul>
   <p class = 'text-center text-muted'>
