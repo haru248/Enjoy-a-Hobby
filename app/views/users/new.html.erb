@@ -15,7 +15,13 @@
 
     <%= f.label :password_confirmation, class: 'badge badge-primary' %>
     <%= f.password_field :password_confirmation, class: 'form-control' %><br>
-    
-    <%= f.submit t('defaults.register'), class: 'btn btn-lg btn-primary btn-block' %>
+
+    <%= javascript_pack_tag 'user_agree' %>
+    <%= label_tag 'user[consent]', class: 'container' do %>
+      <%= check_box_tag :check, true, false, class: 'user_agree_check_margin', id: 'agree_check_box' %>
+      <%= link_to t('supports.terms_of_servise.title'), terms_of_servise_path, target: '_blank' %>・<%= link_to t('supports.privacy_policy.title'), privacy_policy_path, target: '_blank' %><%= t '.agree'  %>
+    <% end %>
+    <br><br>
+    <%= f.submit t('defaults.register'), class: 'btn btn-lg btn-primary btn-block', id: 'register_btn' %>
   <% end %>
 </div>

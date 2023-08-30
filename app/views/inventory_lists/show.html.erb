@@ -37,8 +37,6 @@
                     <li class = 'list-group-item'>
                       <div class = "property<%= property.id %> d-flex justify-content-between align-items-center">
 
-                        <!-- #何故かURL内で環境変数を呼び出せない -->
-                        <!-- rspecを作る内容 モーダル確認 登録後リンクがあるか(登録していない版も) -->
                         <% if property.amazon_url_or_product_name.present? %>
                           <%= link_to property.property_name, check_url_or_keyword(property), target: '_blank' %>
                         <% else %>
