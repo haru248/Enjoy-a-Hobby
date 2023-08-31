@@ -3,7 +3,7 @@ class PurchaseList < ApplicationRecord
   has_many :purchases, dependent: :destroy
   has_many :schedules, dependent: :nullify
 
-  validates :purchase_list_name, presence: true
+  validates :purchase_list_name, presence: true, length: { maximum: 255 }
 
   def self.ransackable_attributes(auth_object = nil)
     ['purchase_list_name']
